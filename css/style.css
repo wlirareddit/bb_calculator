@@ -1,0 +1,386 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.login-page {
+  width: 500px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: left;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+label {
+	font-size: 20px;
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 5px;
+  box-sizing: border-box;
+  font-size: 20px;
+  text-align: center;
+}
+.form select {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+.form .message {
+  margin: 20px 0 0;
+  color: #444;
+  font-size: 21px;
+  text-align: center;
+}
+.form .message a {
+  color: #444;
+  font-size: 21px;
+  font-weight: bold;
+}
+.form .register-form {
+  display: none;
+}
+
+
+body {
+  background-image: url("../img/background.png");
+  background-size:cover;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+}
+
+h1{
+	padding-top: 15px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+.tooltip1 .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip1 .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip1:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  font-size: 30px;
+  font-weight: bold;
+  vertical-align: center;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 10px;
+  width: 10px;
+  top: 5px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(10px);
+  -ms-transform: translateX(10px);
+  transform: translateX(10px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+legend {
+	font-size: 1.1rem;
+}
+
+.rating {
+    float:left;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.rating:not(:checked) > input {
+    position:absolute;
+    /*top:-9999px;*/
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:150%;
+    line-height:1.2;
+    color:#ddd;
+    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: gold;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+
+/* General Buttons */
+button {
+  width: 210px;
+  height: 40px;
+  background: linear-gradient(to bottom, #4eb5e5 0%,#389ed5 100%); /* W3C */
+  border: none;
+  border-radius: 5px;
+  position: relative;
+  border-bottom: 4px solid #2b8bc6;
+  color: #fbfbfb;
+  font-weight: 600;
+  font-family: 'Open Sans', sans-serif;
+  text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+  font-size: 15px;
+  text-align: left;
+  text-indent: 5px;
+  box-shadow: 0px 3px 0px 0px rgba(0,0,0,.2);
+  cursor: pointer;
+
+/* Just for presentation */  
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+button:active {
+  box-shadow: 0px 2px 0px 0px rgba(0,0,0,.2);
+  top: 1px;
+}
+
+button:after {
+  content: "";
+  width: 0;
+  height: 0;
+  display: block;
+  border-top: 20px solid #187dbc;
+  border-bottom: 20px solid #187dbc;
+  border-left: 16px solid transparent;
+  border-right: 20px solid #187dbc;
+  position: absolute;
+  opacity: 0.6; 
+  right: 0;
+  top: 0;
+  border-radius: 0 5px 5px 0;  
+}
+
+/* Button pointing left */
+
+button.back {
+  text-align: right;
+  padding-right: 12px;
+  box-sizing: border-box;
+}
+button.back:after {
+  content: "";
+  width: 0;
+  height: 0;
+  display: block;
+  border-top: 20px solid #187dbc;
+  border-bottom: 20px solid #187dbc;
+  border-right: 16px solid transparent;
+  border-left: 20px solid #187dbc;
+  position: absolute;
+  opacity: 0.6; 
+  left: 0;
+  top: 0;
+  border-radius: 5px 0 0 5px;    
+}
+
+/* Single buttons */
+
+button.site {
+  width: 40px;
+  text-align: center;
+  text-indent: 0;
+}
+button.site:after{
+  display: none;
+}
+
+
+h2{
+	align: center;
+}
+
+
+/* Presentation stuff */
+.holder {
+  width: 400px;
+  background: #efefef;
+  padding: 30px 10px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-top: 20px;  
+  text-align: center;
+}
+
+
+input[type="number"] {
+    position: relative;
+    margin: 0 0 1rem;
+    border: 1px solid #BBB;
+    border-color: #BBB #ECECEC #ECECEC #BBB;
+    padding: .2rem;
+}
+
+/* Spin Buttons modified */
+input[type="number"].mod::-webkit-outer-spin-button, 
+input[type="number"].mod::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    background: #FFF url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAKUlEQVQYlWNgwAT/sYhhKPiPT+F/LJgEsHv37v+EMGkmkuImoh2NoQAANlcun/q4OoYAAAAASUVORK5CYII=) no-repeat center center;
+    width: 1em;
+    border-left: 1px solid #BBB;
+    opacity: .5; /* shows Spin Buttons per default (Chrome >= 39) */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+input[type="number"].mod::-webkit-inner-spin-button:hover,
+input[type="number"].mod::-webkit-inner-spin-button:active{
+    box-shadow: 0 0 2px #0CF;
+    opacity: .8;
+}
+
+/* Override browser form filling */
+input:-webkit-autofill {
+    background: black;
+    color: red;
+}
+
+
+
+
+
+
