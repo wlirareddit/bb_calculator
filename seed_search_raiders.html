@@ -1522,9 +1522,10 @@
         			 result.Geography = Geography;
         			 result.Economy = Economy;
         			 result.Facilities = Facilities;
-        			 result.TheLion = TheLionEval;
-        			 result.TheBear = TheBearEval;
-        			 result.TheViper = TheViperEval;
+        			 result.Barbarian1 = TheLionEval;
+        			 result.Barbarian2 = TheBearEval;
+        			 result.Barbarian3 = TheViperEval;
+        			 result.Monk = TheMonkEval;
 					 
         			 
         			 
@@ -2623,9 +2624,10 @@
         				result.Geography = Math.round(result.Geography * 100) / 100;
         				result.Economy = Math.round(result.Economy * 100) / 100;
         				result.Facilities = Math.round(result.Facilities * 100) / 100;
-        				result.TheLion = Math.round(result.TheLion * 100) / 100;
-						result.TheBear = Math.round(result.TheBear * 100) / 100;
-						result.TheViper = Math.round(result.TheViper * 100) / 100;
+        				result.Barbarian1 = Math.round(result.Barbarian1 * 100) / 100;
+						result.Barbarian2 = Math.round(result.Barbarian2 * 100) / 100;
+						result.Barbarian3 = Math.round(result.Barbarian3 * 100) / 100;
+						result.Monk = Math.round(result.Monk * 100) / 100;
         				results.push(result);
         			}
         			results.sort((a, b) => (a.Evaluation > b.Evaluation) ? -1 : 1);
