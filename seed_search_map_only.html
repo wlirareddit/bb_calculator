@@ -252,9 +252,27 @@
 								 //set default stars
 								
 								jsonfile = jsonfile.concat(data);
+								//minmax = getMaxMinValues(jsonfile);
+								
+								$.getJSON('seeds_Poacher.json', function(data) {
+								//console.log(data);
+								 lb.close();
+								 //set default stars
+								
+								jsonfile = jsonfile.concat(data);
+								//minmax = getMaxMinValues(jsonfile);
+								
+								$.getJSON('seeds_Raiders.json', function(data) {
+								//console.log(data);
+								 lb.close();
+								 //set default stars
+								
+								jsonfile = jsonfile.concat(data);
 								minmax = getMaxMinValues(jsonfile);
 								
 								document.getElementById("number_of_seeds").innerText = numberWithCommas(jsonfile.length)+" Seeds";
+							});
+							});
         				});
         		 });
         			
