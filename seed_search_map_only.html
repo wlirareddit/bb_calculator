@@ -20,6 +20,10 @@
     <script type="text/javascript">
         //lone wolf drop down sort        			
         	  
+					function numberWithCommas(x) {
+						return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+					}
+			  
         			function clearTable() {
         				const myNode = document.getElementById("table");
         				myNode.innerHTML = '';
@@ -249,6 +253,8 @@
 								
 								jsonfile = jsonfile.concat(data);
 								minmax = getMaxMinValues(jsonfile);
+								
+								document.getElementById("number_of_seeds").innerText = numberWithCommas(jsonfile.length)+" Seeds";
         				});
         		 });
         			
@@ -1861,14 +1867,17 @@
 									</div>
 								</div>
 								<div class="row vertical-align">
-									<div class="col-4" align="right">
+									<div class="col-2" align="center">
 										<img src="background_12.png" width="70" height="70" alt="MapOnly">
 									</div>
-									<div class="col-4" align="center">
+									<div class="col-2" align="center">
 										<img src="background_35.png" width="70" height="70" alt="MapOnly">
 									</div>
-									<div class="col-4" align="left">
+									<div class="col-2" align="center">
 										<img src="background_34.png" width="70" height="70" alt="MapOnly">
+									</div>
+									<div class="col-6" align="center">
+										<h3 id="number_of_seeds" align="center">Seeds</h3>
 									</div>
 								</div>
                             </div>

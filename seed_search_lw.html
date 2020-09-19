@@ -18,7 +18,11 @@
 
 
     <script type="text/javascript">
-        //lone wolf drop down sort        			
+        //lone wolf drop down sort      
+
+					function numberWithCommas(x) {
+						return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+					}
         	  
         			function clearTable() {
         				const myNode = document.getElementById("table");
@@ -287,6 +291,8 @@
         			
         			jsonfile = data;
         			minmax = getMaxMinValues(jsonfile);
+					
+					document.getElementById("number_of_seeds").innerText = numberWithCommas(jsonfile.length)+" Seeds";
         			
         		
         				});
@@ -2033,11 +2039,14 @@
 									</div>
 								</div>
 								<div class="row vertical-align">
-									<div class="col-6" align="right">
+									<div class="col-3" align="center">
 										<img src="background_33.png"  width="70" height="70" alt="Lonewolf">
 									</div>
-									<div class="col-6" align="left">
+									<div class="col-3" align="center">
 										<img src="trait_icon_63.png"  width="70" height="70" alt="Lonewolf">
+									</div>
+									<div class="col-6" align="center">
+										<h3 id="number_of_seeds" align="center">Seeds</h3>
 									</div>
 								</div>
                             </div>
