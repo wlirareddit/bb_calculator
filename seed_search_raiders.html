@@ -1966,7 +1966,24 @@
         			minmax.maxMeleeDefenseC = -1;
         			minmax.minMeleeDefenseC = 99999;
         			minmax.maxRangedDefenseC = -1;
-        			minmax.minRangedDefenseC = 99999;	
+        			minmax.minRangedDefenseC = 99999;
+
+					minmax.maxHealthD = -1;
+        			minmax.minHealthD = 99999;
+        			minmax.maxFatigueD = -1;
+        			minmax.minFatigueD = 99999;
+        			minmax.maxResolveD = -1;
+        			minmax.minResolveD = 99999;
+        			minmax.maxInitiativeD = -1;
+        			minmax.minInitiativeD = 99999;
+        			minmax.maxMeleeAttackD = -1;
+        			minmax.minMeleeAttackD = 99999;
+        			minmax.maxRangedAttackD = -1;
+        			minmax.minRangedAttackD = 99999;
+        			minmax.maxMeleeDefenseD = -1;
+        			minmax.minMeleeDefenseD = 99999;
+        			minmax.maxRangedDefenseD = -1;
+        			minmax.minRangedDefenseD = 99999;					
         			
         			
         			
@@ -2610,6 +2627,64 @@
         				}
         				if (parseInt(seed[i].RDefC) < minmax.minRangedDefenseC){
         					minmax.minRangedDefenseC = parseInt(seed[i].RDefC);
+        				}
+						
+						
+						
+						if (parseInt(seed[i].HealthD) > minmax.maxHealthD){
+        					minmax.maxHealthD = parseInt(seed[i].HealthD);
+        				}
+        				if (parseInt(seed[i].HealthD) < minmax.minHealthD){
+        					minmax.minHealthD = parseInt(seed[i].HealthD);
+        				}
+        				
+        				if (parseInt(seed[i].FatigueD) > minmax.maxFatigueD){
+        					minmax.maxFatigueD = parseInt(seed[i].FatigueD);
+        				}
+        				if (parseInt(seed[i].FatigueD) < minmax.minFatigueD){
+        					minmax.minFatigueD = parseInt(seed[i].FatigueD);
+        				}		
+        				
+        				if (parseInt(seed[i].ResolveD) > minmax.maxResolveD){
+        					minmax.maxResolveD = parseInt(seed[i].ResolveD);
+        				}
+        				if (parseInt(seed[i].ResolveD) < minmax.minResolveD){
+        					minmax.minResolveD = parseInt(seed[i].ResolveD);
+        				}		
+        				
+        				if (parseInt(seed[i].InitiativeD) > minmax.maxInitiativeD){
+        					minmax.maxInitiativeD = parseInt(seed[i].InitiativeD);
+        				}
+        				if (parseInt(seed[i].InitiativeD) < minmax.minInitiativeD){
+        					minmax.minInitiativeD = parseInt(seed[i].InitiativeD);
+        				}		
+        				
+        				if (parseInt(seed[i].MAttSkillD) > minmax.maxMeleeAttackD){
+        					minmax.maxMeleeAttackD = parseInt(seed[i].MAttSkillD);
+        				}
+        				if (parseInt(seed[i].MAttSkillD) < minmax.minMeleeAttackD){
+        					minmax.minMeleeAttackD = parseInt(seed[i].MAttSkillD);
+        				}		
+        				
+        				if (parseInt(seed[i].RAttSkillD) > minmax.maxRangedAttackD){
+        					minmax.maxRangedAttackD = parseInt(seed[i].RAttSkillD);
+        				}
+        				if (parseInt(seed[i].RAttSkillD) < minmax.minRangedAttackD){
+        					minmax.minRangedAttackD = parseInt(seed[i].RAttSkillD);
+        				}		
+        				
+        				if (parseInt(seed[i].MDefD) > minmax.maxMeleeDefenseD){
+        					minmax.maxMeleeDefenseD = parseInt(seed[i].MDefD);
+        				}
+        				if (parseInt(seed[i].MDefD) < minmax.minMeleeDefenseD){
+        					minmax.minMeleeDefenseD = parseInt(seed[i].MDefD);
+        				}	
+        				
+        				if (parseInt(seed[i].RDefD) > minmax.maxRangedDefenseD){
+        					minmax.maxRangedDefenseD = parseInt(seed[i].RDefD);
+        				}
+        				if (parseInt(seed[i].RDefD) < minmax.minRangedDefenseD){
+        					minmax.minRangedDefenseD = parseInt(seed[i].RDefD);
         				}
         				
         			}
