@@ -1192,7 +1192,16 @@
         		 function evaluateSeed(rawseed, minmax){
         		 
         			 var seed = normalizeSeed(rawseed, minmax);
+					 var talentsA = parseTalents(rawseed.TalentsA);
+					 var talentsB = parseTalents(rawseed.TalentsB);
+					 var talentsC = parseTalents(rawseed.TalentsC);
+					 var talentsD = parseTalents(rawseed.TalentsD);
 					 //console.log(seed);
+					 console.log(talentsA);
+					 console.log(talentsB);
+					 console.log(talentsC);
+					 console.log(talentsD);
+					 console.log("######");
         			 
         			 //var a1 = (((seed.Diameter) + (seed.Radius) + (seed.Size))/3);
         			 var a1 = seed.Radius;
@@ -1365,14 +1374,14 @@
         			 
         			 
         			 var TheLionEval = TheLionImportance * (
-        				HealthLionImportance * (seed.HealthA)+
-        				FatigueLionImportance * (seed.FatigueA)+
-        				ResolveLionImportance * (seed.ResolveA)+
-        				InitiativeLionImportance * (seed.InitiativeA)+
-        				MeleeAttackLionImportance * (seed.MeleeAttackA)+
-        				RangedAttackLionImportance * (seed.RangedAttackA)+
-        				MeleeDefenseLionImportance * (seed.MeleeDefenseA)+
-        				RangedDefenseLionImportance * (seed.RangedDefenseA)+
+        				Math.min(HealthLionImportance, 2) * (seed.HealthA)+ Math.max(HealthLionImportance-2, 0) * talentsA.HP+
+        				Math.min(FatigueLionImportance, 2) * (seed.FatigueA)+ Math.max(FatigueLionImportance-2, 0) * talentsA.FAT+
+        				Math.min(ResolveLionImportance, 2) * (seed.ResolveA)+ Math.max(ResolveLionImportance-2, 0) * talentsA.RES+
+        				Math.min(InitiativeLionImportance, 2) * (seed.InitiativeA)+ Math.max(InitiativeLionImportance-2, 0) * talentsA.INI+
+        				Math.min(MeleeAttackLionImportance, 2) * (seed.MeleeAttackA)+ Math.max(MeleeAttackLionImportance-2, 0) * talentsA.MA+
+        				Math.min(RangedAttackLionImportance, 2) * (seed.RangedAttackA)+ Math.max(RangedAttackLionImportance-2, 0) * talentsA.RA+
+        				Math.min(MeleeDefenseLionImportance, 2) * (seed.MeleeDefenseA)+ Math.max(MeleeDefenseLionImportance-2, 0) * talentsA.MD+
+        				Math.min(RangedDefenseLionImportance, 2) * (seed.RangedDefenseA)+ Math.max(RangedDefenseLionImportance-2, 0) * talentsA.RD+
         				Trait1LionImportance * trait1A +
         				Trait2LionImportance * trait2A
         			 )*1.0/TheLionDenominator;
@@ -1411,14 +1420,14 @@
 					 }
 					 
 					 var TheBearEval = TheBearImportance * (
-        				HealthBearImportance * (seed.HealthB)+
-        				FatigueBearImportance * (seed.FatigueB)+
-        				ResolveBearImportance * (seed.ResolveB)+
-        				InitiativeBearImportance * (seed.InitiativeB)+
-        				MeleeAttackBearImportance * (seed.MeleeAttackB)+
-        				RangedAttackBearImportance * (seed.RangedAttackB)+
-        				MeleeDefenseBearImportance * (seed.MeleeDefenseB)+
-        				RangedDefenseBearImportance * (seed.RangedDefenseB)+
+        				Math.min(HealthBearImportance, 2) * (seed.HealthB)+ Math.max(HealthBearImportance-2, 0) * talentsB.HP+
+        				Math.min(FatigueBearImportance, 2) * (seed.FatigueB)+ Math.max(FatigueBearImportance-2, 0) * talentsB.FAT+
+        				Math.min(ResolveBearImportance, 2) * (seed.ResolveB)+ Math.max(ResolveBearImportance-2, 0) * talentsB.RES+
+        				Math.min(InitiativeBearImportance, 2) * (seed.InitiativeB)+ Math.max(InitiativeBearImportance-2, 0) * talentsB.INI+
+        				Math.min(MeleeAttackBearImportance, 2) * (seed.MeleeAttackB)+ Math.max(MeleeAttackBearImportance-2, 0) * talentsB.MA+
+        				Math.min(RangedAttackBearImportance, 2) * (seed.RangedAttackB)+ Math.max(RangedAttackBearImportance-2, 0) * talentsB.RA+
+        				Math.min(MeleeDefenseBearImportance, 2) * (seed.MeleeDefenseB)+ Math.max(MeleeDefenseBearImportance-2, 0) * talentsB.MD+
+        				Math.min(RangedDefenseBearImportance, 2) * (seed.RangedDefenseB)+ Math.max(RangedDefenseBearImportance-2, 0) * talentsB.RD+
         				Trait1BearImportance * trait1B +
         				Trait2BearImportance * trait2B
         			 )*1.0/TheBearDenominator;
@@ -1457,14 +1466,14 @@
 					 }
 					 
 					 var TheViperEval = TheViperImportance * (
-        				HealthViperImportance * (seed.HealthC)+
-        				FatigueViperImportance * (seed.FatigueC)+
-        				ResolveViperImportance * (seed.ResolveC)+
-        				InitiativeViperImportance * (seed.InitiativeC)+
-        				MeleeAttackViperImportance * (seed.MeleeAttackC)+
-        				RangedAttackViperImportance * (seed.RangedAttackC)+
-        				MeleeDefenseViperImportance * (seed.MeleeDefenseC)+
-        				RangedDefenseViperImportance * (seed.RangedDefenseC)+
+        				Math.min(HealthViperImportance, 2) * (seed.HealthC)+ Math.max(HealthViperImportance-2, 0) * talentsC.HP+
+        				Math.min(FatigueViperImportance, 2) * (seed.FatigueC)+ Math.max(FatigueViperImportance-2, 0) * talentsC.FAT+
+        				Math.min(ResolveViperImportance, 2) * (seed.ResolveC)+ Math.max(ResolveViperImportance-2, 0) * talentsC.RES+
+        				Math.min(InitiativeViperImportance, 2) * (seed.InitiativeC)+ Math.max(InitiativeViperImportance-2, 0) * talentsC.INI+
+        				Math.min(MeleeAttackViperImportance, 2) * (seed.MeleeAttackC)+ Math.max(MeleeAttackViperImportance-2, 0) * talentsC.MA+
+        				Math.min(RangedAttackViperImportance, 2) * (seed.RangedAttackC)+ Math.max(RangedAttackViperImportance-2, 0) * talentsC.RA+
+        				Math.min(MeleeDefenseViperImportance, 2) * (seed.MeleeDefenseC)+ Math.max(MeleeDefenseViperImportance-2, 0) * talentsC.MD+
+        				Math.min(RangedDefenseViperImportance, 2) * (seed.RangedDefenseC)+ Math.max(RangedDefenseViperImportance-2, 0) * talentsC.RD+
         				Trait1ViperImportance * trait1C +
         				Trait2ViperImportance * trait2C
         			 )*1.0/TheViperDenominator;
@@ -1510,14 +1519,14 @@
 					 }
 					 
 					 var TheMonkEval = TheMonkImportance * (
-        				HealthMonkImportance * (seed.HealthD)+
-        				FatigueMonkImportance * (seed.FatigueD)+
-        				ResolveMonkImportance * (seed.ResolveD)+
-        				InitiativeMonkImportance * (seed.InitiativeD)+
-        				MeleeAttackMonkImportance * (seed.MeleeAttackD)+
-        				RangedAttackMonkImportance * (seed.RangedAttackD)+
-        				MeleeDefenseMonkImportance * (seed.MeleeDefenseD)+
-        				RangedDefenseMonkImportance * (seed.RangedDefenseD)+
+        				Math.min(HealthMonkImportance, 2) * (seed.HealthD)+ Math.max(HealthMonkImportance-2, 0) * talentsD.HP+
+        				Math.min(FatigueMonkImportance, 2) * (seed.FatigueD)+ Math.max(FatigueMonkImportance-2, 0) * talentsD.FAT+
+        				Math.min(ResolveMonkImportance, 2) * (seed.ResolveD)+ Math.max(ResolveMonkImportance-2, 0) * talentsD.RES+
+        				Math.min(InitiativeMonkImportance, 2) * (seed.InitiativeD)+ Math.max(InitiativeMonkImportance-2, 0) * talentsD.INI+
+        				Math.min(MeleeAttackMonkImportance, 2) * (seed.MeleeAttackD)+ Math.max(MeleeAttackMonkImportance-2, 0) * talentsD.MA+
+        				Math.min(RangedAttackMonkImportance, 2) * (seed.RangedAttackD)+ Math.max(RangedAttackMonkImportance-2, 0) * talentsD.RA+
+        				Math.min(MeleeDefenseMonkImportance, 2) * (seed.MeleeDefenseD)+ Math.max(MeleeDefenseMonkImportance-2, 0) * talentsD.MD+
+        				Math.min(RangedDefenseMonkImportance, 2) * (seed.RangedDefenseD)+ Math.max(RangedDefenseMonkImportance-2, 0) * talentsD.RD+
         				Trait1MonkImportance * trait1D +
         				Trait2MonkImportance * trait2D
         			 )*1.0/TheMonkDenominator;
@@ -1530,10 +1539,10 @@
         			 result.Geography = Geography;
         			 result.Economy = Economy;
         			 result.Facilities = Facilities;
-        			 result.Barbarian1 = TheLionEval;
-        			 result.Barbarian2 = TheBearEval;
-        			 result.Barbarian3 = TheViperEval;
-        			 result.Monk = TheMonkEval;
+        			 result.Cultist1 = TheLionEval;
+        			 result.Cultist2 = TheBearEval;
+        			 result.Cultist3 = TheViperEval;
+        			 result.Cultist4 = TheMonkEval;
 					 
         			 
         			 
@@ -1680,7 +1689,9 @@
         					seed.Weaponsmith = (parseInt(rawseed.Weaponsmith) - maxmin.minWeaponsmith)/(maxmin.maxWeaponsmith-maxmin.minWeaponsmith);
         					
         					
-        					seed.HealthA = (parseInt(rawseed.HealthA) - maxmin.minHealthA)/(maxmin.maxHealthA-maxmin.minHealthA);
+        					
+							
+							seed.HealthA = (parseInt(rawseed.HealthA) - maxmin.minHealthA)/(maxmin.maxHealthA-maxmin.minHealthA);
         					
         					seed.FatigueA = (parseInt(rawseed.FatigueA) - maxmin.minFatigueA)/(maxmin.maxFatigueA-maxmin.minFatigueA);
         					
@@ -1699,6 +1710,8 @@
         					seed.Trait1A = rawseed.Trait1A;
         					
         					seed.Trait2A = rawseed.Trait2A;
+							
+							
 							
 							seed.HealthB = (parseInt(rawseed.HealthB) - maxmin.minHealthB)/(maxmin.maxHealthB-maxmin.minHealthB);
         					
@@ -2456,6 +2469,7 @@
         					minmax.minTrainingHall = parseInt(seed[i].TrainingHall);
         				}
         				
+						
         				if (parseInt(seed[i].HealthA) > minmax.maxHealthA){
         					minmax.maxHealthA = parseInt(seed[i].HealthA);
         				}
@@ -2707,10 +2721,10 @@
         				result.Geography = Math.round(result.Geography * 100) / 100;
         				result.Economy = Math.round(result.Economy * 100) / 100;
         				result.Facilities = Math.round(result.Facilities * 100) / 100;
-        				result.Barbarian1 = Math.round(result.Barbarian1 * 100) / 100;
-						result.Barbarian2 = Math.round(result.Barbarian2 * 100) / 100;
-						result.Barbarian3 = Math.round(result.Barbarian3 * 100) / 100;
-						result.Monk = Math.round(result.Monk * 100) / 100;
+        				result.Cultist1 = Math.round(result.Cultist1 * 100) / 100;
+						result.Cultist2 = Math.round(result.Cultist2 * 100) / 100;
+						result.Cultist3 = Math.round(result.Cultist3 * 100) / 100;
+						result.Cultist4 = Math.round(result.Cultist4 * 100) / 100;
         				results.push(result);
         			}
         			results.sort((a, b) => (a.Evaluation > b.Evaluation) ? -1 : 1);
@@ -2729,6 +2743,22 @@
             window.location = url;
         }
     }
+	
+	function parseTalents(talents){
+		var talentList = talents.split(",");
+		var broTalents = new Object();
+		
+		broTalents.HP = parseInt(talentList[0])/3;
+		broTalents.RES = parseInt(talentList[1])/3;
+		broTalents.FAT = parseInt(talentList[2])/3;
+		broTalents.INI = parseInt(talentList[3])/3;
+		broTalents.MA = parseInt(talentList[4])/3;
+		broTalents.RA = parseInt(talentList[5])/3;
+		broTalents.MD = parseInt(talentList[6])/3;
+		broTalents.RD = parseInt(talentList[7])/3;
+		
+		return broTalents;
+	}
     </script>
 </head>
 
