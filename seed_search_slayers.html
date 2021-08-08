@@ -248,18 +248,6 @@
         			 var RangedDefenseViperImportance = 0;
         			 var Trait1ViperImportance = 0;
         			 var Trait2ViperImportance = 0;
-					 
-					 var TheMonkImportance = 1;
-        			 var HealthMonkImportance = 0;
-        			 var FatigueMonkImportance = 0;
-        			 var ResolveMonkImportance = 0;
-        			 var InitiativeMonkImportance = 0;
-        			 var MeleeAttackMonkImportance = 0;
-        			 var RangedAttackMonkImportance = 0;
-        			 var MeleeDefenseMonkImportance = 0;
-        			 var RangedDefenseMonkImportance = 0;
-        			 var Trait1MonkImportance = 0;
-        			 var Trait2MonkImportance = 0;
         			 
         			 var jsonfile;
         			 var minmax = new Object();
@@ -267,10 +255,7 @@
         		 
         		 $(function(){
         					var lb = new $.LoadingBox({loadingImageSrc: "https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif",});
-        
-        					//$.getJSON('https://www.sfu.ca/~wpintoli/LW_Seed_Farm.json', function(data) {
-        		 //$.getJSON('https://drive.google.com/uc?export=view&id=1rAHkB2KIe64ld5s0NZvpofkhpPHTzD9E', function(data) {
-        		 $.getJSON('seeds_Raiders.json', function(data) {
+        		 $.getJSON('seeds_Slayer.json', function(data) {
         			//console.log(data)
         			//call relevant functions after loading data
         			 lb.close();
@@ -379,27 +364,12 @@
         			selectDefaultRadioVal(document.getElementById('MeleeDefenseViperImportanceForm'), 'ratingMeleeDefenseViperImportance');
         			selectDefaultRadioVal(document.getElementById('Trait1ViperImportanceForm'), 'ratingTrait1ViperImportance');
         			selectDefaultRadioVal(document.getElementById('Trait2ViperImportanceForm'), 'ratingTrait2ViperImportance');
-					
-					
-					
-					
-					selectDefaultRadioVal(document.getElementById('TheMonkImportanceForm'), 'ratingTheMonkImportance');
-        			selectDefaultRadioVal(document.getElementById('HealthMonkImportanceForm'), 'ratingHealthMonkImportance');
-        			selectDefaultRadioVal(document.getElementById('FatigueMonkImportanceForm'), 'ratingFatigueMonkImportance');
-        			selectDefaultRadioVal(document.getElementById('ResolveMonkImportanceForm'), 'ratingResolveMonkImportance');
-        			selectDefaultRadioVal(document.getElementById('InitiativeMonkImportanceForm'), 'ratingInitiativeMonkImportance');
-        			selectDefaultRadioVal(document.getElementById('MeleeAttackMonkImportanceForm'), 'ratingMeleeAttackMonkImportance');
-        			selectDefaultRadioVal(document.getElementById('RangedAttackMonkImportanceForm'), 'ratingRangedAttackMonkImportance');
-        			selectDefaultRadioVal(document.getElementById('RangedDefenseMonkImportanceForm'), 'ratingRangedDefenseMonkImportance');
-        			selectDefaultRadioVal(document.getElementById('MeleeDefenseMonkImportanceForm'), 'ratingMeleeDefenseMonkImportance');
-        			selectDefaultRadioVal(document.getElementById('Trait1MonkImportanceForm'), 'ratingTrait1MonkImportance');
-        			selectDefaultRadioVal(document.getElementById('Trait2MonkImportanceForm'), 'ratingTrait2MonkImportance');
-					
         			
         			jsonfile = data;
         			minmax = getMaxMinValues(jsonfile);
-        			
+					
 					document.getElementById("number_of_seeds").innerText = numberWithCommas(jsonfile.length)+" Seeds";
+        			
         		
         				});
         		 });
@@ -938,65 +908,6 @@
         			Trait2ViperImportance = val;
         			console.log(val);
                  }
-				 
-				 
-				 
-				 
-				 function toggleTheMonkImportance() {
-        			var val = getRadioVal( document.getElementById('TheMonkImportanceForm'), 'ratingTheMonkImportance' );
-        			TheMonkImportance = val;
-        			console.log(val);
-                 }
-        		 function toggleHealthMonkImportance() {
-        			var val = getRadioVal( document.getElementById('HealthMonkImportanceForm'), 'ratingHealthMonkImportance' );
-        			HealthMonkImportance = val;
-        			console.log(val);
-                 }
-        		 function toggleFatigueMonkImportance() {
-        			var val = getRadioVal( document.getElementById('FatigueMonkImportanceForm'), 'ratingFatigueMonkImportance' );
-        			FatigueMonkImportance = val;
-        			console.log(val);
-                 }
-        		 function toggleResolveMonkImportance() {
-        			var val = getRadioVal( document.getElementById('ResolveMonkImportanceForm'), 'ratingResolveMonkImportance' );
-        			ResolveMonkImportance = val;
-        			console.log(val);
-                 }
-        		 function toggleInitiativeMonkImportance() {
-        			var val = getRadioVal( document.getElementById('InitiativeMonkImportanceForm'), 'ratingInitiativeMonkImportance' );
-        			InitiativeMonkImportance = val;
-        			console.log(val);
-                 }
-        		 function toggleMeleeAttackMonkImportance() {
-        			var val = getRadioVal( document.getElementById('MeleeAttackMonkImportanceForm'), 'ratingMeleeAttackMonkImportance' );
-        			MeleeAttackMonkImportance = val;
-        			console.log(val);
-                 }
-        		 function toggleRangedAttackMonkImportance() {
-        			var val = getRadioVal( document.getElementById('RangedAttackMonkImportanceForm'), 'ratingRangedAttackMonkImportance' );
-        			RangedAttackMonkImportance = val;
-        			console.log(val);
-                 }
-        		 function toggleMeleeDefenseMonkImportance() {
-        			var val = getRadioVal( document.getElementById('MeleeDefenseMonkImportanceForm'), 'ratingMeleeDefenseMonkImportance' );
-        			MeleeDefenseMonkImportance = val;
-        			console.log(val);
-                 }
-        		 function toggleRangedDefenseMonkImportance() {
-        			var val = getRadioVal( document.getElementById('RangedDefenseMonkImportanceForm'), 'ratingRangedDefenseMonkImportance' );
-        			RangedDefenseMonkImportance = val;
-        			console.log(val);
-                 }
-        		 function toggleTrait1MonkImportance() {
-        			var val = getRadioVal( document.getElementById('Trait1MonkImportanceForm'), 'ratingTrait1MonkImportance' );
-        			Trait1MonkImportance = val;
-        			console.log(val);
-                 }
-        		 function toggleTrait2MonkImportance() {
-        			var val = getRadioVal( document.getElementById('Trait2MonkImportanceForm'), 'ratingTrait2MonkImportance' );
-        			Trait2MonkImportance = val;
-        			console.log(val);
-                 }
         		 
         		 //function to take care of the reverse toggles
         		 function toggleSettlementCompactnessReverse() {
@@ -1468,72 +1379,18 @@
         				Trait1ViperImportance * trait1C +
         				Trait2ViperImportance * trait2C
         			 )*1.0/TheViperDenominator;
-					 
-					 
-					 
-					 //then we see if we care about the trait
-        			 var trait1D = document.getElementById("SelectedTrait1D").value;
-        			 var trait2D = document.getElementById("SelectedTrait2D").value;			 
-        			 if (trait1D == trait2D){
-        				trait2D = "none";
-        			 }
-					 console.log(minmax);
-					 console.log(seed);
-					 console.log(rawseed);
-					 console.log("####");
-        			 
-        			 if ((trait1D == seed.Trait1D | trait1D == seed.Trait2D )& trait1D != "none"){
-        				trait1D = 1.0;
-        			 } else {
-        				trait1D = 0.0;
-        			 }
-        			 
-        			 if ((trait2D == seed.Trait2D | trait2D == seed.Trait1D )& trait2D != "none"){
-        				trait2D = 1.0;
-        			 } else {
-        				trait2D = 0.0;
-        			 }
-					 
-					 
-					 var TheMonkDenominator = Math.min(1, HealthMonkImportance) + 
-												Math.min(1, FatigueMonkImportance) +
-												Math.min(1, ResolveMonkImportance) +
-												Math.min(1, InitiativeMonkImportance) +
-												Math.min(1, MeleeAttackMonkImportance) +
-												Math.min(1, RangedAttackMonkImportance) +
-												Math.min(1, MeleeDefenseMonkImportance) +
-												Math.min(1, RangedDefenseMonkImportance) +
-												Math.min(1, Trait1MonkImportance) +
-												Math.min(1, Trait2MonkImportance);
-					 if (TheMonkDenominator == 0){
-						TheMonkDenominator = 1;
-					 }
-					 
-					 var TheMonkEval = TheMonkImportance * (
-        				HealthMonkImportance * (seed.HealthD)+
-        				FatigueMonkImportance * (seed.FatigueD)+
-        				ResolveMonkImportance * (seed.ResolveD)+
-        				InitiativeMonkImportance * (seed.InitiativeD)+
-        				MeleeAttackMonkImportance * (seed.MeleeAttackD)+
-        				RangedAttackMonkImportance * (seed.RangedAttackD)+
-        				MeleeDefenseMonkImportance * (seed.MeleeDefenseD)+
-        				RangedDefenseMonkImportance * (seed.RangedDefenseD)+
-        				Trait1MonkImportance * trait1D +
-        				Trait2MonkImportance * trait2D
-        			 )*1.0/TheMonkDenominator;
         			 
         			 
-        			 var Evaluation = Geography + Economy + Facilities + TheLionEval + TheBearEval + TheViperEval + TheMonkEval;
+        			 var Evaluation = Geography + Economy + Facilities + TheLionEval + TheBearEval + TheViperEval;
         			 
         			 var result = new Object();
         			 result.Evaluation = Evaluation;
         			 result.Geography = Geography;
         			 result.Economy = Economy;
         			 result.Facilities = Facilities;
-        			 result.Barbarian1 = TheLionEval;
-        			 result.Barbarian2 = TheBearEval;
-        			 result.Barbarian3 = TheViperEval;
-        			 result.Monk = TheMonkEval;
+        			 result.Slayer1 = TheLionEval;
+        			 result.Slayer2 = TheBearEval;
+        			 result.Slayer3 = TheViperEval;
 					 
         			 
         			 
@@ -1741,28 +1598,6 @@
         					seed.Trait1C = rawseed.Trait1C;
         					
         					seed.Trait2C = rawseed.Trait2C;
-							
-							
-							
-							seed.HealthD = (parseInt(rawseed.HealthD) - maxmin.minHealthD)/(maxmin.maxHealthD-maxmin.minHealthD);
-        					
-        					seed.FatigueD = (parseInt(rawseed.FatigueD) - maxmin.minFatigueD)/(maxmin.maxFatigueD-maxmin.minFatigueD);
-        					
-        					seed.ResolveD = (parseInt(rawseed.ResolveD) - maxmin.minResolveD)/(maxmin.maxResolveD-maxmin.minResolveD);
-        					
-        					seed.InitiativeD = (parseInt(rawseed.InitiativeD) - maxmin.minInitiativeD)/(maxmin.maxInitiativeD-maxmin.minInitiativeD);
-        					
-        					seed.MeleeAttackD = (parseInt(rawseed.MAttSkillD) - maxmin.minMeleeAttackD)/(maxmin.maxMeleeAttackD-maxmin.minMeleeAttackD);
-        					
-        					seed.RangedAttackD = (parseInt(rawseed.RAttSkillD) - maxmin.minRangedAttackD)/(maxmin.maxRangedAttackD-maxmin.minRangedAttackD);
-        					
-        					seed.MeleeDefenseD = (parseInt(rawseed.MDefD) - maxmin.minMeleeDefenseD)/(maxmin.maxMeleeDefenseD-maxmin.minMeleeDefenseD);
-        					
-        					seed.RangedDefenseD = (parseInt(rawseed.RDefD) - maxmin.minRangedDefenseD)/(maxmin.maxRangedDefenseD-maxmin.minRangedDefenseD);
-        					
-        					seed.Trait1D = rawseed.Trait1D;
-        					
-        					seed.Trait2D = rawseed.Trait2D;
         					
         					return seed;
         		 
@@ -1967,24 +1802,7 @@
         			minmax.maxMeleeDefenseC = -1;
         			minmax.minMeleeDefenseC = 99999;
         			minmax.maxRangedDefenseC = -1;
-        			minmax.minRangedDefenseC = 99999;
-
-					minmax.maxHealthD = -1;
-        			minmax.minHealthD = 99999;
-        			minmax.maxFatigueD = -1;
-        			minmax.minFatigueD = 99999;
-        			minmax.maxResolveD = -1;
-        			minmax.minResolveD = 99999;
-        			minmax.maxInitiativeD = -1;
-        			minmax.minInitiativeD = 99999;
-        			minmax.maxMeleeAttackD = -1;
-        			minmax.minMeleeAttackD = 99999;
-        			minmax.maxRangedAttackD = -1;
-        			minmax.minRangedAttackD = 99999;
-        			minmax.maxMeleeDefenseD = -1;
-        			minmax.minMeleeDefenseD = 99999;
-        			minmax.maxRangedDefenseD = -1;
-        			minmax.minRangedDefenseD = 99999;					
+        			minmax.minRangedDefenseC = 99999;	
         			
         			
         			
@@ -2629,64 +2447,6 @@
         				if (parseInt(seed[i].RDefC) < minmax.minRangedDefenseC){
         					minmax.minRangedDefenseC = parseInt(seed[i].RDefC);
         				}
-						
-						
-						
-						if (parseInt(seed[i].HealthD) > minmax.maxHealthD){
-        					minmax.maxHealthD = parseInt(seed[i].HealthD);
-        				}
-        				if (parseInt(seed[i].HealthD) < minmax.minHealthD){
-        					minmax.minHealthD = parseInt(seed[i].HealthD);
-        				}
-        				
-        				if (parseInt(seed[i].FatigueD) > minmax.maxFatigueD){
-        					minmax.maxFatigueD = parseInt(seed[i].FatigueD);
-        				}
-        				if (parseInt(seed[i].FatigueD) < minmax.minFatigueD){
-        					minmax.minFatigueD = parseInt(seed[i].FatigueD);
-        				}		
-        				
-        				if (parseInt(seed[i].ResolveD) > minmax.maxResolveD){
-        					minmax.maxResolveD = parseInt(seed[i].ResolveD);
-        				}
-        				if (parseInt(seed[i].ResolveD) < minmax.minResolveD){
-        					minmax.minResolveD = parseInt(seed[i].ResolveD);
-        				}		
-        				
-        				if (parseInt(seed[i].InitiativeD) > minmax.maxInitiativeD){
-        					minmax.maxInitiativeD = parseInt(seed[i].InitiativeD);
-        				}
-        				if (parseInt(seed[i].InitiativeD) < minmax.minInitiativeD){
-        					minmax.minInitiativeD = parseInt(seed[i].InitiativeD);
-        				}		
-        				
-        				if (parseInt(seed[i].MAttSkillD) > minmax.maxMeleeAttackD){
-        					minmax.maxMeleeAttackD = parseInt(seed[i].MAttSkillD);
-        				}
-        				if (parseInt(seed[i].MAttSkillD) < minmax.minMeleeAttackD){
-        					minmax.minMeleeAttackD = parseInt(seed[i].MAttSkillD);
-        				}		
-        				
-        				if (parseInt(seed[i].RAttSkillD) > minmax.maxRangedAttackD){
-        					minmax.maxRangedAttackD = parseInt(seed[i].RAttSkillD);
-        				}
-        				if (parseInt(seed[i].RAttSkillD) < minmax.minRangedAttackD){
-        					minmax.minRangedAttackD = parseInt(seed[i].RAttSkillD);
-        				}		
-        				
-        				if (parseInt(seed[i].MDefD) > minmax.maxMeleeDefenseD){
-        					minmax.maxMeleeDefenseD = parseInt(seed[i].MDefD);
-        				}
-        				if (parseInt(seed[i].MDefD) < minmax.minMeleeDefenseD){
-        					minmax.minMeleeDefenseD = parseInt(seed[i].MDefD);
-        				}	
-        				
-        				if (parseInt(seed[i].RDefD) > minmax.maxRangedDefenseD){
-        					minmax.maxRangedDefenseD = parseInt(seed[i].RDefD);
-        				}
-        				if (parseInt(seed[i].RDefD) < minmax.minRangedDefenseD){
-        					minmax.minRangedDefenseD = parseInt(seed[i].RDefD);
-        				}
         				
         			}
         		
@@ -2707,10 +2467,9 @@
         				result.Geography = Math.round(result.Geography * 100) / 100;
         				result.Economy = Math.round(result.Economy * 100) / 100;
         				result.Facilities = Math.round(result.Facilities * 100) / 100;
-        				result.Barbarian1 = Math.round(result.Barbarian1 * 100) / 100;
-						result.Barbarian2 = Math.round(result.Barbarian2 * 100) / 100;
-						result.Barbarian3 = Math.round(result.Barbarian3 * 100) / 100;
-						result.Monk = Math.round(result.Monk * 100) / 100;
+        				result.Slayer1 = Math.round(result.Slayer1 * 100) / 100;
+						result.Slayer2 = Math.round(result.Slayer2 * 100) / 100;
+						result.Slayer3 = Math.round(result.Slayer3 * 100) / 100;
         				results.push(result);
         			}
         			results.sort((a, b) => (a.Evaluation > b.Evaluation) ? -1 : 1);
@@ -2745,21 +2504,21 @@
 									<div class="col-12" align="center">
 										<select name="list" id="list" accesskey="target" onchange="goToNewPage()">
 											<option value="seed_search_poachers.html">Band of Poachers</option>
-											<option value="seed_search_slayers.html">Beast Slayers</option>
+											<option value="seed_search_slayers.html" selected='selected'>Beast Slayers</option>
 											<option value="seed_search_cults.html">Davkul Cultists</option>
 											<option value="seed_search_gladiators.html">Gladiators</option>
 											<option value="seed_search_lw.html">Lone Wolf</option>
-											<option value="seed_search_raiders.html" selected='selected'>Raiders</option>
+											<option value="seed_search_raiders.html">Raiders</option>
 											<option value="seed_search_map_only.html">Map Criteria Only</option>
 										</select>
 									</div>
 								</div>
 								<div class="row vertical-align">
 									<div class="col-3" align="center">
-										<img src="background_58.png" width="70" height="70" alt="Gladiators">
+										<img src="background_57.png" width="70" height="70" alt="Gladiators">
 									</div>
 									<div class="col-3" align="center">
-										<img src="background_13.png" width="70" height="70" alt="Gladiators">
+										<img src="trait_icon_51.png" width="70" height="70" alt="Gladiators">
 									</div>
 									<div class="col-6" align="center">
 										<h3 id="number_of_seeds" align="center">Seeds</h3>
@@ -3662,7 +3421,7 @@
             <div class="col-lg-12 col-sm-12">
                 <div class="">
                     <div class="form">
-                        <h2 align="center">Barbarian #1</h2>
+                        <h2 align="center">Beast Slayer #1</h2>
                         <div class="row vertical-align">
                             <div class="col-3" align="left">
                                 <legend align="right"><b>Overall Importance:</b></legend>
@@ -3946,7 +3705,7 @@
 			<div class="col-lg-12 col-sm-12">
                 <div class="">
                     <div class="form">
-                        <h2 align="center">Barbarian #2</h2>
+                        <h2 align="center">Beast Slayer #2</h2>
                         <div class="row vertical-align">
                             <div class="col-3" align="left">
                                 <legend align="right"><b>Overall Importance:</b></legend>
@@ -4230,7 +3989,7 @@
 			<div class="col-lg-12 col-sm-12">
                 <div class="">
                     <div class="form">
-                        <h2 align="center">Barbarian #3</h2>
+                        <h2 align="center">Beast Slayer #3</h2>
                         <div class="row vertical-align">
                             <div class="col-3" align="left">
                                 <legend align="right"><b>Overall Importance:</b></legend>
@@ -4435,6 +4194,7 @@
                             <div class="col-3" align="left">
                                 <select id='SelectedTrait2C' name='SelectedTrait2C'>
 									<option value='none' selected='selected'>None</option>
+									<option value='ailing'>Ailing</option>
 									<option value='athletic'>Athletic</option>
 									<option value='bloodthirsty'>Bloodthirsty</option>
 									<option value='brave'>Brave</option>
@@ -4469,6 +4229,7 @@
 									<option value='strong'>Strong</option>
 									<option value='sure_footing'>Sure footing</option>
 									<option value='superstitious'>Superstitious</option>
+									<option value='teamplayer'>Team Player</option>
 									<option value='tough'>Tough</option>
 								</select>
                             </div>
@@ -4501,290 +4262,6 @@
                                         <input type="radio" id="field 611_star3" name="ratingTrait2ViperImportance" value=2 /><label class="full" for="field 611_star3"></label>
                                         <input type="radio" id="field 611_star2" name="ratingTrait2ViperImportance" value=1 /><label class="full" for="field 611_star2"></label>
                                         <input type="radio" id="field 611_star1" name="ratingTrait2ViperImportance" value=0 /><label class="full" for="field 611_star1"></label>
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-
-			<div class="col-lg-12 col-sm-12">
-                <div class="">
-                    <div class="form">
-                        <h2 align="center">Monk</h2>
-                        <div class="row vertical-align">
-                            <div class="col-3" align="left">
-                                <legend align="right"><b>Overall Importance:</b></legend>
-                            </div>
-                            <div class="col-3" align="right" id="TheMonkImportance">
-                                <form action="#" method="post" class="TheMonkImportanceForm" id="TheMonkImportanceForm">
-                                    <fieldset class="rating" onchange="toggleTheMonkImportance()">
-                                        <input type="radio" id="field 701_star5" name="ratingTheMonkImportance" value=5 /><label class="full" for="field 701_star5"></label>
-                                        <input type="radio" id="field 701_star4" name="ratingTheMonkImportance" value=4 /><label class="full" for="field 701_star4"></label>
-                                        <input type="radio" id="field 701_star3" name="ratingTheMonkImportance" value=3 /><label class="full" for="field 701_star3"></label>
-                                        <input type="radio" id="field 701_star2" name="ratingTheMonkImportance" value=2 /><label class="full" for="field 701_star2"></label>
-                                        <input type="radio" id="field 701_star1" name="ratingTheMonkImportance" value=1 /><label class="full" for="field 701_star1"></label>
-                                    </fieldset>
-                                </form>
-                            </div>
-
-
-                            <div class="col-3" align="left">
-                                <legend align="right">Health:</legend>
-                            </div>
-                            <div class="col-3" align="right" id="HealthMonkImportance">
-                                <form action="#" method="post" class="HealthMonkImportanceForm" id="HealthMonkImportanceForm">
-                                    <fieldset class="rating" onchange="toggleHealthMonkImportance()">
-                                        <input type="radio" id="field 702_star5" name="ratingHealthMonkImportance" value=4 /><label class="full" for="field 702_star5"></label>
-                                        <input type="radio" id="field 702_star4" name="ratingHealthMonkImportance" value=3 /><label class="full" for="field 702_star4"></label>
-                                        <input type="radio" id="field 702_star3" name="ratingHealthMonkImportance" value=2 /><label class="full" for="field 702_star3"></label>
-                                        <input type="radio" id="field 702_star2" name="ratingHealthMonkImportance" value=1 /><label class="full" for="field 702_star2"></label>
-                                        <input type="radio" id="field 702_star1" name="ratingHealthMonkImportance" value=0 /><label class="full" for="field 702_star1"></label>
-                                    </fieldset>
-                                </form>
-                            </div>
-
-                        </div>
-                        <div class="row vertical-align">
-                            <div class="col-3" align="left">
-                                <legend align="right">Fatigue:</legend>
-                            </div>
-                            <div class="col-3" align="right" id="FatigueMonkImportance">
-                                <form action="#" method="post" class="FatigueMonkImportanceForm" id="FatigueMonkImportanceForm">
-                                    <fieldset class="rating" onchange="toggleFatigueMonkImportance()">
-                                        <input type="radio" id="field 703_star5" name="ratingFatigueMonkImportance" value=4 /><label class="full" for="field 703_star5"></label>
-                                        <input type="radio" id="field 703_star4" name="ratingFatigueMonkImportance" value=3 /><label class="full" for="field 703_star4"></label>
-                                        <input type="radio" id="field 703_star3" name="ratingFatigueMonkImportance" value=2 /><label class="full" for="field 703_star3"></label>
-                                        <input type="radio" id="field 703_star2" name="ratingFatigueMonkImportance" value=1 /><label class="full" for="field 703_star2"></label>
-                                        <input type="radio" id="field 703_star1" name="ratingFatigueMonkImportance" value=0 /><label class="full" for="field 703_star1"></label>
-                                    </fieldset>
-                                </form>
-                            </div>
-
-
-                            <div class="col-3" align="left">
-                                <legend align="right">Resolve:</legend>
-                            </div>
-                            <div class="col-3" align="right" id="ResolveMonkImportance">
-                                <form action="#" method="post" class="ResolveMonkImportanceForm" id="ResolveMonkImportanceForm">
-                                    <fieldset class="rating" onchange="toggleResolveMonkImportance()">
-                                        <input type="radio" id="field 704_star5" name="ratingResolveMonkImportance" value=4 /><label class="full" for="field 704_star5"></label>
-                                        <input type="radio" id="field 704_star4" name="ratingResolveMonkImportance" value=3 /><label class="full" for="field 704_star4"></label>
-                                        <input type="radio" id="field 704_star3" name="ratingResolveMonkImportance" value=2 /><label class="full" for="field 704_star3"></label>
-                                        <input type="radio" id="field 704_star2" name="ratingResolveMonkImportance" value=1 /><label class="full" for="field 704_star2"></label>
-                                        <input type="radio" id="field 704_star1" name="ratingResolveMonkImportance" value=0 /><label class="full" for="field 704_star1"></label>
-                                    </fieldset>
-                                </form>
-                            </div>
-
-                        </div>
-                        <div class="row vertical-align">
-                            <div class="col-3" align="left">
-                                <legend align="right">Initiative:</legend>
-                            </div>
-                            <div class="col-3" align="right" id="InitiativeMonkImportance">
-                                <form action="#" method="post" class="InitiativeMonkImportanceForm" id="InitiativeMonkImportanceForm">
-                                    <fieldset class="rating" onchange="toggleInitiativeMonkImportance()">
-                                        <input type="radio" id="field 705_star5" name="ratingInitiativeMonkImportance" value=4 /><label class="full" for="field 705_star5"></label>
-                                        <input type="radio" id="field 705_star4" name="ratingInitiativeMonkImportance" value=3 /><label class="full" for="field 705_star4"></label>
-                                        <input type="radio" id="field 705_star3" name="ratingInitiativeMonkImportance" value=2 /><label class="full" for="field 705_star3"></label>
-                                        <input type="radio" id="field 705_star2" name="ratingInitiativeMonkImportance" value=1 /><label class="full" for="field 705_star2"></label>
-                                        <input type="radio" id="field 705_star1" name="ratingInitiativeMonkImportance" value=0 /><label class="full" for="field 705_star1"></label>
-                                    </fieldset>
-                                </form>
-                            </div>
-
-
-                            <div class="col-3" align="left">
-                                <legend align="right">MeleeAttack:</legend>
-                            </div>
-                            <div class="col-3" align="right" id="MeleeAttackMonkImportance">
-                                <form action="#" method="post" class="MeleeAttackMonkImportanceForm" id="MeleeAttackMonkImportanceForm">
-                                    <fieldset class="rating" onchange="toggleMeleeAttackMonkImportance()">
-                                        <input type="radio" id="field 706_star5" name="ratingMeleeAttackMonkImportance" value=4 /><label class="full" for="field 706_star5"></label>
-                                        <input type="radio" id="field 706_star4" name="ratingMeleeAttackMonkImportance" value=3 /><label class="full" for="field 706_star4"></label>
-                                        <input type="radio" id="field 706_star3" name="ratingMeleeAttackMonkImportance" value=2 /><label class="full" for="field 706_star3"></label>
-                                        <input type="radio" id="field 706_star2" name="ratingMeleeAttackMonkImportance" value=1 /><label class="full" for="field 706_star2"></label>
-                                        <input type="radio" id="field 706_star1" name="ratingMeleeAttackMonkImportance" value=0 /><label class="full" for="field 706_star1"></label>
-                                    </fieldset>
-                                </form>
-                            </div>
-
-                        </div>
-
-                        <div class="row vertical-align">
-                            <div class="col-3" align="left">
-                                <legend align="right">RangedAttack:</legend>
-                            </div>
-                            <div class="col-3" align="right" id="RangedAttackMonkImportance">
-                                <form action="#" method="post" class="RangedAttackMonkImportanceForm" id="RangedAttackMonkImportanceForm">
-                                    <fieldset class="rating" onchange="toggleRangedAttackMonkImportance()">
-                                        <input type="radio" id="field 707_star5" name="ratingRangedAttackMonkImportance" value=4 /><label class="full" for="field 707_star5"></label>
-                                        <input type="radio" id="field 707_star4" name="ratingRangedAttackMonkImportance" value=3 /><label class="full" for="field 707_star4"></label>
-                                        <input type="radio" id="field 707_star3" name="ratingRangedAttackMonkImportance" value=2 /><label class="full" for="field 707_star3"></label>
-                                        <input type="radio" id="field 707_star2" name="ratingRangedAttackMonkImportance" value=1 /><label class="full" for="field 707_star2"></label>
-                                        <input type="radio" id="field 707_star1" name="ratingRangedAttackMonkImportance" value=0 /><label class="full" for="field 707_star1"></label>
-                                    </fieldset>
-                                </form>
-                            </div>
-
-
-                            <div class="col-3" align="left">
-                                <legend align="right">MeleeDefense:</legend>
-                            </div>
-                            <div class="col-3" align="right" id="MeleeDefenseMonkImportance">
-                                <form action="#" method="post" class="MeleeDefenseMonkImportanceForm" id="MeleeDefenseMonkImportanceForm">
-                                    <fieldset class="rating" onchange="toggleMeleeDefenseMonkImportance()">
-                                        <input type="radio" id="field 708_star5" name="ratingMeleeDefenseMonkImportance" value=4 /><label class="full" for="field 708_star5"></label>
-                                        <input type="radio" id="field 708_star4" name="ratingMeleeDefenseMonkImportance" value=3 /><label class="full" for="field 708_star4"></label>
-                                        <input type="radio" id="field 708_star3" name="ratingMeleeDefenseMonkImportance" value=2 /><label class="full" for="field 708_star3"></label>
-                                        <input type="radio" id="field 708_star2" name="ratingMeleeDefenseMonkImportance" value=1 /><label class="full" for="field 708_star2"></label>
-                                        <input type="radio" id="field 708_star1" name="ratingMeleeDefenseMonkImportance" value=0 /><label class="full" for="field 708_star1"></label>
-                                    </fieldset>
-                                </form>
-                            </div>
-
-                        </div>
-
-
-                        <div class="row vertical-align">
-                            <div class="col-3" align="left">
-                                <legend align="right">RangedDefense:</legend>
-                            </div>
-                            <div class="col-3" align="right" id="RangedDefenseMonkImportance">
-                                <form action="#" method="post" class="RangedDefenseMonkImportanceForm" id="RangedDefenseMonkImportanceForm">
-                                    <fieldset class="rating" onchange="toggleRangedDefenseMonkImportance()">
-                                        <input type="radio" id="field 709_star5" name="ratingRangedDefenseMonkImportance" value=4 /><label class="full" for="field 709_star5"></label>
-                                        <input type="radio" id="field 709_star4" name="ratingRangedDefenseMonkImportance" value=3 /><label class="full" for="field 709_star4"></label>
-                                        <input type="radio" id="field 709_star3" name="ratingRangedDefenseMonkImportance" value=2 /><label class="full" for="field 709_star3"></label>
-                                        <input type="radio" id="field 709_star2" name="ratingRangedDefenseMonkImportance" value=1 /><label class="full" for="field 709_star2"></label>
-                                        <input type="radio" id="field 709_star1" name="ratingRangedDefenseMonkImportance" value=0 /><label class="full" for="field 709_star1"></label>
-                                    </fieldset>
-                                </form>
-                            </div>
-
-                        </div>
-
-                        <div class="row vertical-align">
-                            <div class="col-3" align="left">
-                                <legend align="right">Select Trait 1:</legend>
-                            </div>
-                            <div class="col-3" align="left">
-                                <select id='SelectedTrait1D' name='SelectedTrait1D'>
-									<option value='none' selected='selected'>None</option>
-									<option value='athletic'>Athletic</option>
-									<option value='bloodthirsty'>Bloodthirsty</option>
-									<option value='brave'>Brave</option>
-									<option value='bright'>Bright</option>
-									<option value='brute'>Brute</option>
-									<option value='cocky'>Cocky</option>
-									<option value='deathwish'>Deathwish</option>
-									<option value='determined'>Determined</option>
-									<option value='dexterous'>Dexterous</option>
-									<option value='drunkard'>Drunkard</option>
-									<option value='dumb'>Dumb</option>
-									<option value='eagle_eyes'>Eagle eyes</option>
-									<option value='fat'>Fat</option>
-									<option value='fearless'>Fearless</option>
-									<option value='gluttonous'>Gluttonous</option>
-									<option value='hate_beasts'>Hate beasts</option>
-									<option value='hate_greenskins'>Hate greenskins</option>
-									<option value='hate_undead'>Hate undead</option>
-									<option value='huge'>Huge</option>
-									<option value='iron_jaw'>Iron jaw</option>
-									<option value='iron_lungs'>Iron lungs</option>
-									<option value='impatient'>Impatient</option>
-									<option value='lucky'>Lucky</option>
-									<option value='night_blind'>Night Blind</option>
-									<option value='night_owl'>Night Owl</option>
-									<option value='optimist'>Optimist</option>
-									<option value='paranoid'>Paranoid</option>
-									<option value='pessimist'>Pessimist</option>
-									<option value='quick'>Quick</option>
-									<option value='spartan'>Spartan</option>
-									<option value='short_sighted'>Short sighted</option>
-									<option value='strong'>Strong</option>
-									<option value='sure_footing'>Sure footing</option>
-									<option value='superstitious'>Superstitious</option>
-									<option value='tough'>Tough</option>
-								</select>
-                            </div>
-
-                            <div class="col-3" align="left">
-                                <legend align="right">Select Trait 2:</legend>
-                            </div>
-                            <div class="col-3" align="left">
-                                <select id='SelectedTrait2D' name='SelectedTrait2D'>
-									<option value='none' selected='selected'>None</option>
-									<option value='athletic'>Athletic</option>
-									<option value='bloodthirsty'>Bloodthirsty</option>
-									<option value='brave'>Brave</option>
-									<option value='bright'>Bright</option>
-									<option value='brute'>Brute</option>
-									<option value='cocky'>Cocky</option>
-									<option value='deathwish'>Deathwish</option>
-									<option value='determined'>Determined</option>
-									<option value='dexterous'>Dexterous</option>
-									<option value='drunkard'>Drunkard</option>
-									<option value='dumb'>Dumb</option>
-									<option value='eagle_eyes'>Eagle eyes</option>
-									<option value='fat'>Fat</option>
-									<option value='fearless'>Fearless</option>
-									<option value='gluttonous'>Gluttonous</option>
-									<option value='hate_beasts'>Hate beasts</option>
-									<option value='hate_greenskins'>Hate greenskins</option>
-									<option value='hate_undead'>Hate undead</option>
-									<option value='huge'>Huge</option>
-									<option value='iron_jaw'>Iron jaw</option>
-									<option value='iron_lungs'>Iron lungs</option>
-									<option value='impatient'>Impatient</option>
-									<option value='lucky'>Lucky</option>
-									<option value='night_blind'>Night Blind</option>
-									<option value='night_owl'>Night Owl</option>
-									<option value='optimist'>Optimist</option>
-									<option value='paranoid'>Paranoid</option>
-									<option value='pessimist'>Pessimist</option>
-									<option value='quick'>Quick</option>
-									<option value='spartan'>Spartan</option>
-									<option value='short_sighted'>Short sighted</option>
-									<option value='strong'>Strong</option>
-									<option value='sure_footing'>Sure footing</option>
-									<option value='superstitious'>Superstitious</option>
-									<option value='tough'>Tough</option>
-								</select>
-                            </div>
-                        </div>
-
-                        <div class="row vertical-align">
-                            <div class="col-3" align="left">
-                                <legend align="right">Trait 1 Importance:</legend>
-                            </div>
-                            <div class="col-3" align="right" id="Trait1MonkImportance">
-                                <form action="#" method="post" class="Trait1MonkImportanceForm" id="Trait1MonkImportanceForm">
-                                    <fieldset class="rating" onchange="toggleTrait1MonkImportance()">
-                                        <input type="radio" id="field 710_star5" name="ratingTrait1MonkImportance" value=4 /><label class="full" for="field 710_star5"></label>
-                                        <input type="radio" id="field 710_star4" name="ratingTrait1MonkImportance" value=3 /><label class="full" for="field 710_star4"></label>
-                                        <input type="radio" id="field 710_star3" name="ratingTrait1MonkImportance" value=2 /><label class="full" for="field 710_star3"></label>
-                                        <input type="radio" id="field 710_star2" name="ratingTrait1MonkImportance" value=1 /><label class="full" for="field 710_star2"></label>
-                                        <input type="radio" id="field 710_star1" name="ratingTrait1MonkImportance" value=0 /><label class="full" for="field 710_star1"></label>
-                                    </fieldset>
-                                </form>
-                            </div>
-
-                            <div class="col-3" align="left">
-                                <legend align="right">Trait 2 Importance:</legend>
-                            </div>
-                            <div class="col-3" align="right" id="Trait2MonkImportance">
-                                <form action="#" method="post" class="Trait2MonkImportanceForm" id="Trait2MonkImportanceForm">
-                                    <fieldset class="rating" onchange="toggleTrait2MonkImportance()">
-                                        <input type="radio" id="field 711_star5" name="ratingTrait2MonkImportance" value=4 /><label class="full" for="field 711_star5"></label>
-                                        <input type="radio" id="field 711_star4" name="ratingTrait2MonkImportance" value=3 /><label class="full" for="field 711_star4"></label>
-                                        <input type="radio" id="field 711_star3" name="ratingTrait2MonkImportance" value=2 /><label class="full" for="field 711_star3"></label>
-                                        <input type="radio" id="field 711_star2" name="ratingTrait2MonkImportance" value=1 /><label class="full" for="field 711_star2"></label>
-                                        <input type="radio" id="field 711_star1" name="ratingTrait2MonkImportance" value=0 /><label class="full" for="field 711_star1"></label>
                                     </fieldset>
                                 </form>
                             </div>
