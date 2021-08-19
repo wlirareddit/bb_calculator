@@ -268,9 +268,7 @@
         		 $(function(){
         					var lb = new $.LoadingBox({loadingImageSrc: "https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif",});
         
-        					//$.getJSON('https://www.sfu.ca/~wpintoli/LW_Seed_Farm.json', function(data) {
-        		 //$.getJSON('https://drive.google.com/uc?export=view&id=1rAHkB2KIe64ld5s0NZvpofkhpPHTzD9E', function(data) {
-        		 $.getJSON('seeds_Cults.json', function(data) {
+        		 $.getJSON('seeds_Cults_01.json', function(data) {
         			//console.log(data)
         			//call relevant functions after loading data
         			 lb.close();
@@ -397,9 +395,21 @@
 					
         			
         			jsonfile = data;
-        			minmax = getMaxMinValues(jsonfile);
-        			
-					document.getElementById("number_of_seeds").innerText = numberWithCommas(jsonfile.length)+" Seeds";
+        			//minmax = getMaxMinValues(jsonfile);					
+					
+					$(function(){
+							 $.getJSON('seeds_Cults_02.json', function(data) {
+							 console.log(data);
+								 lb.close();
+								 //set default stars
+								
+								jsonfile = jsonfile.concat(data);
+								minmax = getMaxMinValues(jsonfile);
+								document.getElementById("number_of_seeds").innerText = numberWithCommas(jsonfile.length)+" Seeds";
+								
+								
+        				});
+        		 });
         		
         				});
         		 });
