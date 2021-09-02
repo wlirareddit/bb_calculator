@@ -201,7 +201,7 @@
         					var lb = new $.LoadingBox({loadingImageSrc: "https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif",});
         
         					//$.getJSON('https://www.sfu.ca/~wpintoli/LW_Seed_Farm.json', function(data) {
-        		 $.getJSON('seeds_LW.json', function(data) {
+        		 $.getJSON('seeds_LW_0.json', function(data) {
         			//console.log(data)
         			//call relevant functions after loading data
         			 lb.close();
@@ -290,10 +290,21 @@
         			selectDefaultRadioVal(document.getElementById('Trait2ImportanceForm'), 'ratingTrait2Importance');
         			
         			jsonfile = data;
-        			minmax = getMaxMinValues(jsonfile);
+        			//minmax = getMaxMinValues(jsonfile);					
 					
-					document.getElementById("number_of_seeds").innerText = numberWithCommas(jsonfile.length)+" Seeds";
-        			
+					$(function(){
+							 $.getJSON('seeds_LW_1.json', function(data) {
+							 console.log(data);
+								 lb.close();
+								 //set default stars
+								
+								jsonfile = jsonfile.concat(data);
+								minmax = getMaxMinValues(jsonfile);
+								document.getElementById("number_of_seeds").innerText = numberWithCommas(jsonfile.length)+" Seeds";
+								
+								
+        				});
+        		 });
         		
         				});
         		 });
