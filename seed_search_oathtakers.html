@@ -1258,25 +1258,6 @@
         				Trait2BearImportance * trait2B
         			 )*1.0/TheBearDenominator;
 					 
-					  //then we see if we care about the trait
-        			 var trait1C = document.getElementById("SelectedTrait1C").value;
-        			 var trait2C = document.getElementById("SelectedTrait2C").value;			 
-        			 if (trait1C == trait2C){
-        				trait2C = "none";
-        			 }
-        			 
-        			 if ((trait1C == seed.Trait1C | trait1C == seed.Trait2C )& trait1C != "none"){
-        				trait1C = 1.0;
-        			 } else {
-        				trait1C = 0.0;
-        			 }
-        			 
-        			 if ((trait2C == seed.Trait2C | trait2C == seed.Trait1C )& trait2C != "none"){
-        				trait2C = 1.0;
-        			 } else {
-        				trait2C = 0.0;
-        			 }
-					 
 					
         			 
         			 
