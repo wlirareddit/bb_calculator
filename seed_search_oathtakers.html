@@ -246,7 +246,7 @@
         
         					//$.getJSON('https://www.sfu.ca/~wpintoli/LW_Seed_Farm.json', function(data) {
         		 //$.getJSON('https://drive.google.com/uc?export=view&id=1rAHkB2KIe64ld5s0NZvpofkhpPHTzD9E', function(data) {
-        		 $.getJSON('seeds_Oathtakers.json', function(data) {
+        		 $.getJSON('seeds_Oathtakers_0.json', function(data) {
         			//console.log(data)
         			//call relevant functions after loading data
         			 lb.close();
@@ -345,9 +345,19 @@
         			selectDefaultRadioVal(document.getElementById('Trait2BearImportanceForm'), 'ratingTrait2BearImportance');
         			
         			jsonfile = data;
-        			minmax = getMaxMinValues(jsonfile);
-					
-					document.getElementById("number_of_seeds").innerText = numberWithCommas(jsonfile.length)+" Seeds";
+        			$(function(){
+							 $.getJSON('seeds_Oathtakers_1.json', function(data) {
+							 console.log(data);
+								 lb.close();
+								 //set default stars
+								
+								jsonfile = jsonfile.concat(data);
+								minmax = getMaxMinValues(jsonfile);
+								document.getElementById("number_of_seeds").innerText = numberWithCommas(jsonfile.length)+" Seeds";
+								
+								
+        				});
+        		 });
         			
         		
         				});
