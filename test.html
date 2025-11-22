@@ -5,1028 +5,366 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battle Brothers Perfect Seed Generator v2</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #e4e4e4;
-            line-height: 1.6;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 30px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: #f39c12;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .subtitle {
-            color: #bdc3c7;
-            font-size: 1.1rem;
-        }
-
-        .origin-selector {
-            margin-bottom: 30px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-        }
-
-        .origin-selector label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: #f39c12;
-        }
-
-        select {
-            width: 100%;
-            padding: 12px;
-            font-size: 1rem;
-            border: 2px solid #34495e;
-            border-radius: 6px;
-            background: #2c3e50;
-            color: #e4e4e4;
-            cursor: pointer;
-            transition: border-color 0.3s;
-        }
-
-        select:hover, select:focus {
-            border-color: #f39c12;
-            outline: none;
-        }
-
-        .criteria-section {
-            margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .section-header {
-            padding: 15px 20px;
-            background: rgba(243, 156, 18, 0.2);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
-
-        .section-header:hover {
-            background: rgba(243, 156, 18, 0.3);
-        }
-
-        .section-header h2 {
-            font-size: 1.3rem;
-            color: #f39c12;
-        }
-
-        .toggle-icon {
-            font-size: 1.5rem;
-            transition: transform 0.3s;
-        }
-
-        .section-header.collapsed .toggle-icon {
-            transform: rotate(-90deg);
-        }
-
-        .section-content {
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .section-content.hidden {
-            display: none;
-        }
-
-        .slider-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .slider-label {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 500;
-            text-transform: capitalize;
-        }
-
-        .slider-value {
-            background: rgba(243, 156, 18, 0.2);
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-weight: 600;
-            color: #f39c12;
-            min-width: 40px;
-            text-align: center;
-        }
-
-        input[type="range"] {
-            width: 100%;
-            height: 8px;
-            border-radius: 4px;
-            background: #34495e;
-            outline: none;
-            -webkit-appearance: none;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #f39c12;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        input[type="range"]::-webkit-slider-thumb:hover {
-            background: #e67e22;
-        }
-
-        input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #f39c12;
-            cursor: pointer;
-            border: none;
-        }
-
-        .minmax-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .minmax-inputs {
-            display: flex;
-            gap: 10px;
-        }
-
-        .minmax-inputs input {
-            flex: 1;
-            padding: 8px;
-            border: 2px solid #34495e;
-            border-radius: 4px;
-            background: #2c3e50;
-            color: #e4e4e4;
-            font-size: 0.9rem;
-        }
-
-        .minmax-inputs input:focus {
-            border-color: #f39c12;
-            outline: none;
-        }
-
-        .minmax-inputs label {
-            font-size: 0.85rem;
-            color: #95a5a6;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 15px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-
-        button {
-            flex: 1;
-            min-width: 200px;
-            padding: 15px 30px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
-        }
-
-        .btn-secondary {
-            background: #34495e;
-            color: #e4e4e4;
-        }
-
-        .btn-secondary:hover {
-            background: #2c3e50;
-            transform: translateY(-2px);
-        }
-
-        .btn-export {
-            background: #27ae60;
-            color: white;
-        }
-
-        .btn-export:hover {
-            background: #229954;
-            transform: translateY(-2px);
-        }
-
-        button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none !important;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 40px;
-            font-size: 1.2rem;
-            color: #f39c12;
-        }
-
-        .loading::after {
-            content: '...';
-            animation: dots 1.5s steps(4, end) infinite;
-        }
-
-        @keyframes dots {
-            0%, 20% { content: '.'; }
-            40% { content: '..'; }
-            60%, 100% { content: '...'; }
-        }
-
-        .results {
-            margin-top: 40px;
-        }
-
-        .results-header {
-            background: rgba(243, 156, 18, 0.2);
-            padding: 20px;
-            border-radius: 8px 8px 0 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .results-header h2 {
-            color: #f39c12;
-            font-size: 1.5rem;
-        }
-
-        .results-count {
-            color: #95a5a6;
-            font-size: 1rem;
-        }
-
-        .table-container {
-            overflow-x: auto;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 0 0 8px 8px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 800px;
-        }
-
-        thead {
-            background: rgba(52, 73, 94, 0.6);
-            position: sticky;
-            top: 0;
-        }
-
-        th {
-            padding: 15px;
-            text-align: left;
-            font-weight: 600;
-            color: #f39c12;
-            border-bottom: 2px solid #f39c12;
-            white-space: nowrap;
-        }
-
-        td {
-            padding: 12px 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        tbody tr {
-            transition: background 0.2s;
-        }
-
-        tbody tr:hover {
-            background: rgba(243, 156, 18, 0.1);
-        }
-
-        .view-map-link {
-            display: inline-block;
-            padding: 6px 12px;
-            background: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            transition: background 0.3s;
-        }
-
-        .view-map-link:hover {
-            background: #2980b9;
-        }
-
-        .score-cell {
-            font-weight: 600;
-            color: #2ecc71;
-        }
-
-        .error-message {
-            background: rgba(231, 76, 60, 0.2);
-            border: 2px solid #e74c3c;
-            color: #e74c3c;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            .button-group {
-                flex-direction: column;
-            }
-
-            button {
-                min-width: 100%;
-            }
-
-            .section-content {
-                grid-template-columns: 1fr;
-            }
-        }
+        body { font-family: Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; }
+        h1 { text-align: center; }
+        .section { margin-bottom: 20px; }
+        .section h2 { cursor: pointer; background: #f0f0f0; padding: 10px; }
+        .criteria { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+        .criterion { display: flex; flex-direction: column; }
+        .criterion label { font-weight: bold; }
+        .criterion input[type="range"] { width: 100%; }
+        .value { text-align: center; }
+        .buttons { text-align: center; margin: 20px 0; }
+        .button { padding: 10px 20px; margin: 0 10px; cursor: pointer; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background: #f0f0f0; }
+        @media (max-width: 600px) { .criteria { grid-template-columns: 1fr; } }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Battle Brothers Perfect Seed Generator v2</h1>
-            <p class="subtitle">Find your ideal starting location based on terrain, facilities, and economy</p>
-        </header>
-
-        <div class="origin-selector">
-            <label for="origin">Select Origin:</label>
-            <select id="origin">
-                <option value="all">Standard (All Seeds)</option>
-                <option value="lw">Lone Wolf</option>
-                <option value="gladiators">Gladiators</option>
-                <option value="anatomists">Anatomists</option>
-            </select>
-        </div>
-
-        <div class="criteria-section">
-            <div class="section-header" data-section="terrain">
-                <h2>Terrain Preferences</h2>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="section-content" id="terrain-content">
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Plains</span>
-                        <span class="slider-value" id="plains-value">0</span>
-                    </div>
-                    <input type="range" id="plains" min="-5" max="5" value="0" step="1">
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Hills</span>
-                        <span class="slider-value" id="hills-value">0</span>
-                    </div>
-                    <input type="range" id="hills" min="-5" max="5" value="0" step="1">
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Forest</span>
-                        <span class="slider-value" id="forest-value">0</span>
-                    </div>
-                    <input type="range" id="forest" min="-5" max="5" value="0" step="1">
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Swamp</span>
-                        <span class="slider-value" id="swamp-value">0</span>
-                    </div>
-                    <input type="range" id="swamp" min="-5" max="5" value="0" step="1">
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Tundra</span>
-                        <span class="slider-value" id="tundra-value">0</span>
-                    </div>
-                    <input type="range" id="tundra" min="-5" max="5" value="0" step="1">
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Steppe</span>
-                        <span class="slider-value" id="steppe-value">0</span>
-                    </div>
-                    <input type="range" id="steppe" min="-5" max="5" value="0" step="1">
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Desert</span>
-                        <span class="slider-value" id="desert-value">0</span>
-                    </div>
-                    <input type="range" id="desert" min="-5" max="5" value="0" step="1">
-                </div>
-            </div>
-        </div>
-
-        <div class="criteria-section">
-            <div class="section-header" data-section="facilities">
-                <h2>Facilities</h2>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="section-content" id="facilities-content">
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Ports</span>
-                        <span class="slider-value" id="ports-value">0</span>
-                    </div>
-                    <input type="range" id="ports" min="0" max="5" value="0" step="1">
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Arenas</span>
-                        <span class="slider-value" id="arenas-value">0</span>
-                    </div>
-                    <input type="range" id="arenas" min="0" max="5" value="0" step="1">
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Weaponsmiths</span>
-                        <span class="slider-value" id="weaponsmiths-value">0</span>
-                    </div>
-                    <input type="range" id="weaponsmiths" min="0" max="5" value="0" step="1">
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Armorsmiths</span>
-                        <span class="slider-value" id="armorsmiths-value">0</span>
-                    </div>
-                    <input type="range" id="armorsmiths" min="0" max="5" value="0" step="1">
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Fletcher</span>
-                        <span class="slider-value" id="fletcher-value">0</span>
-                    </div>
-                    <input type="range" id="fletcher" min="0" max="5" value="0" step="1">
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Temple</span>
-                        <span class="slider-value" id="temple-value">0</span>
-                    </div>
-                    <input type="range" id="temple" min="0" max="5" value="0" step="1">
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Beast Hunter Camp</span>
-                        <span class="slider-value" id="beasthunter_camp-value">0</span>
-                    </div>
-                    <input type="range" id="beasthunter_camp" min="0" max="5" value="0" step="1">
-                </div>
-            </div>
-        </div>
-
-        <div class="criteria-section">
-            <div class="section-header" data-section="economy">
-                <h2>Economy</h2>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="section-content" id="economy-content">
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Trade Routes</span>
-                        <span class="slider-value" id="trade_routes-value">0</span>
-                    </div>
-                    <input type="range" id="trade_routes" min="0" max="5" value="0" step="1">
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Trade Goods</span>
-                        <span class="slider-value" id="trade_goods-value">0</span>
-                    </div>
-                    <input type="range" id="trade_goods" min="0" max="5" value="0" step="1">
-                </div>
-                <div class="minmax-group">
-                    <div class="slider-label">
-                        <span>Ports</span>
-                    </div>
-                    <div class="minmax-inputs">
-                        <div style="flex: 1;">
-                            <label>Min</label>
-                            <input type="number" id="ports-min" placeholder="Min">
-                        </div>
-                        <div style="flex: 1;">
-                            <label>Max</label>
-                            <input type="number" id="ports-max" placeholder="Max">
-                        </div>
-                    </div>
-                </div>
-                <div class="minmax-group">
-                    <div class="slider-label">
-                        <span>Arenas</span>
-                    </div>
-                    <div class="minmax-inputs">
-                        <div style="flex: 1;">
-                            <label>Min</label>
-                            <input type="number" id="arenas-min" placeholder="Min">
-                        </div>
-                        <div style="flex: 1;">
-                            <label>Max</label>
-                            <input type="number" id="arenas-max" placeholder="Max">
-                        </div>
-                    </div>
-                </div>
-                <div class="minmax-group">
-                    <div class="slider-label">
-                        <span>Weaponsmiths</span>
-                    </div>
-                    <div class="minmax-inputs">
-                        <div style="flex: 1;">
-                            <label>Min</label>
-                            <input type="number" id="weaponsmiths-min" placeholder="Min">
-                        </div>
-                        <div style="flex: 1;">
-                            <label>Max</label>
-                            <input type="number" id="weaponsmiths-max" placeholder="Max">
-                        </div>
-                    </div>
-                </div>
-                <div class="minmax-group">
-                    <div class="slider-label">
-                        <span>Armorsmiths</span>
-                    </div>
-                    <div class="minmax-inputs">
-                        <div style="flex: 1;">
-                            <label>Min</label>
-                            <input type="number" id="armorsmiths-min" placeholder="Min">
-                        </div>
-                        <div style="flex: 1;">
-                            <label>Max</label>
-                            <input type="number" id="armorsmiths-max" placeholder="Max">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="criteria-section">
-            <div class="section-header" data-section="geometry">
-                <h2>Map Geometry</h2>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="section-content" id="geometry-content">
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Size</span>
-                        <span class="slider-value" id="size-value">0</span>
-                    </div>
-                    <input type="range" id="size" min="0" max="5" value="0" step="1">
-                </div>
-                <div class="slider-group">
-                    <div class="slider-label">
-                        <span>Diameter</span>
-                        <span class="slider-value" id="diameter-value">0</span>
-                    </div>
-                    <input type="range" id="diameter" min="0" max="5" value="0" step="1">
-                </div>
-            </div>
-        </div>
-
-        <div class="button-group">
-            <button class="btn-primary" id="search-btn">Find My Perfect Seed</button>
-            <button class="btn-secondary" id="reset-btn">Reset Criteria</button>
-            <button class="btn-export" id="export-btn" disabled>Export Results</button>
-        </div>
-
-        <div id="loading" class="loading" style="display: none;">Loading seed data</div>
-        <div id="error" style="display: none;"></div>
-
-        <div id="results" style="display: none;">
-            <div class="results-header">
-                <h2>Results</h2>
-                <div class="results-count" id="results-count"></div>
-            </div>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Seed</th>
-                            <th>Score</th>
-                            <th>Size</th>
-                            <th>Diameter</th>
-                            <th>Plains</th>
-                            <th>Hills</th>
-                            <th>Forest</th>
-                            <th>Swamp</th>
-                            <th>Tundra</th>
-                            <th>Steppe</th>
-                            <th>Desert</th>
-                            <th>Ports</th>
-                            <th>Arenas</th>
-                            <th>Weaponsmiths</th>
-                            <th>Armorsmiths</th>
-                            <th>Trade Routes</th>
-                            <th>Trade Goods</th>
-                            <th>Map</th>
-                        </tr>
-                    </thead>
-                    <tbody id="results-body"></tbody>
-                </table>
+    <h1>Battle Brothers Perfect Seed Generator v2</h1>
+    
+    <div class="section">
+        <h2>General Settings</h2>
+        <div class="criteria">
+            <div class="criterion">
+                <label for="origin">Origin:</label>
+                <select id="origin">
+                    <option value="all">Standard</option>
+                    <option value="lw">Lone Wolf</option>
+                    <option value="gladiators">Gladiators</option>
+                    <option value="anatomists">Anatomists</option>
+                    <!-- Add more origins as needed, e.g., for new DLC -->
+                </select>
             </div>
         </div>
     </div>
+    
+    <div class="section">
+        <h2>Terrain Preferences (0-5 stars, higher = prefer more)</h2>
+        <div class="criteria" id="terrain-criteria">
+            <!-- Terrains will be added dynamically or hard-coded -->
+            <div class="criterion">
+                <label for="plains">Plains</label>
+                <input type="range" id="plains" min="-5" max="5" value="0" step="1">
+                <span class="value">0</span>
+            </div>
+            <div class="criterion">
+                <label for="hills">Hills</label>
+                <input type="range" id="hills" min="-5" max="5" value="0" step="1">
+                <span class="value">0</span>
+            </div>
+            <div class="criterion">
+                <label for="forest">Forest</label>
+                <input type="range" id="forest" min="-5" max="5" value="0" step="1">
+                <span class="value">0</span>
+            </div>
+            <div class="criterion">
+                <label for="swamp">Swamp</label>
+                <input type="range" id="swamp" min="-5" max="5" value="0" step="1">
+                <span class="value">0</span>
+            </div>
+            <div class="criterion">
+                <label for="tundra">Tundra</label>
+                <input type="range" id="tundra" min="-5" max="5" value="0" step="1">
+                <span class="value">0</span>
+            </div>
+            <div class="criterion">
+                <label for="steppe">Steppe</label>
+                <input type="range" id="steppe" min="-5" max="5" value="0" step="1">
+                <span class="value">0</span>
+            </div>
+            <div class="criterion">
+                <label for="desert">Desert (Blazing Deserts DLC)</label>
+                <input type="range" id="desert" min="-5" max="5" value="0" step="1">
+                <span class="value">0</span>
+            </div>
+            <!-- Add more terrains if needed -->
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Facilities and Locations (0-5 stars)</h2>
+        <div class="criteria" id="facilities-criteria">
+            <div class="criterion">
+                <label for="ports">Ports</label>
+                <input type="range" id="ports" min="0" max="5" value="0" step="1">
+                <span class="value">0</span>
+            </div>
+            <div class="criterion">
+                <label for="arenas">Arenas</label>
+                <input type="range" id="arenas" min="0" max="5" value="0" step="1">
+                <span class="value">0</span>
+            </div>
+            <div class="criterion">
+                <label for="weaponsmiths">Weaponsmiths</label>
+                <input type="range" id="weaponsmiths" min="0" max="5" value="0" step="1">
+                <span class="value">0</span>
+            </div>
+            <div class="criterion">
+                <label for="armorsmiths">Armorsmiths</label>
+                <input type="range" id="armorsmiths" min="0" max="5" value="0" step="1">
+                <span class="value">0</span>
+            </div>
+            <div class="criterion">
+                <label for="fletcher">Fletcher</label>
+                <input type="range" id="fletcher" min="0" max="5" value="0" step="1">
+                <span class="value">0</span>
+            </div>
+            <div class="criterion">
+                <label for="temple">Temple</label>
+                <input type="range" id="temple" min="0" max="5" value="0" step="1">
+                <span class="value">0</span>
+            </div>
+            <div class="criterion">
+                <label for="beasthunter_camp">Beast Hunter Camps</label>
+                <input type="range" id="beasthunter_camp" min="0" max="5" value="0" step="1">
+                <span class="value">0</span>
+            </div>
+            <!-- Add more, e.g., for new DLC like Alchemist labs -->
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Economy and Trade (0-5 stars)</h2>
+        <div class="criteria" id="economy-criteria">
+            <div class="criterion">
+                <label for="trade_routes">Trade Routes</label>
+                <input type="range" id="trade_routes" min="0" max="5" value="0" step="1">
+                <span class="value">0</span>
+            </div>
+            <div class="criterion">
+                <label for="trade_goods">Trade Goods Variety</label>
+                <input type="range" id="trade_goods" min="0" max="5" value="0" step="1">
+                <span class="value">0</span>
+            </div>
+            <!-- Add min/max inputs for granular control -->
+            <div class="criterion">
+                <label for="min_ports">Min Ports</label>
+                <input type="number" id="min_ports" min="0" value="">
+            </div>
+            <div class="criterion">
+                <label for="max_ports">Max Ports</label>
+                <input type="number" id="max_ports" min="0" value="">
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Map Geometry (0-5 stars)</h2>
+        <div class="criteria" id="geometry-criteria">
+            <div class="criterion">
+                <label for="size">Map Size</label>
+                <input type="range" id="size" min="0" max="5" value="0" step="1">
+                <span class="value">0</span>
+            </div>
+            <div class="criterion">
+                <label for="diameter">Map Diameter</label>
+                <input type="range" id="diameter" min="0" max="5" value="0" step="1">
+                <span class="value">0</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="buttons">
+        <button id="search-btn" class="button">Find My Perfect Seed</button>
+        <button id="reset-btn" class="button">Reset Criteria</button>
+        <button id="export-btn" class="button" style="display:none;">Export Results</button>
+    </div>
+    
+    <div id="loading" style="text-align:center; display:none;">Loading...</div>
+    <table id="results" style="display:none;">
+        <thead>
+            <tr>
+                <th>Seed</th>
+                <th>Score</th>
+                <th>Size</th>
+                <th>Diameter</th>
+                <th>Ports</th>
+                <th>Arenas</th>
+                <!-- Add more columns as needed -->
+                <th>View Map</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 
     <script>
-        const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/wlirareddit/bb_calculator/master/';
-        const ORIGIN_FILES = {
-            all: 'all_seeds.json',
-            lw: 'lw_seeds.json',
-            gladiators: 'gladiators_seeds.json',
-            anatomists: 'anatomists_seeds.json'
+        // Collapsible sections
+        document.querySelectorAll('.section h2').forEach(h2 => {
+            h2.addEventListener('click', () => {
+                const content = h2.nextElementSibling;
+                content.style.display = content.style.display === 'none' ? 'grid' : 'none';
+            });
+            h2.nextElementSibling.style.display = 'grid'; // Initial display
+        });
+
+        // Update slider values
+        document.querySelectorAll('input[type="range"]').forEach(input => {
+            input.addEventListener('input', () => {
+                input.nextElementSibling.textContent = input.value;
+            });
+        });
+
+        // Reset button
+        document.getElementById('reset-btn').addEventListener('click', () => {
+            document.querySelectorAll('input[type="range"]').forEach(input => {
+                input.value = 0;
+                input.nextElementSibling.textContent = '0';
+            });
+            document.querySelectorAll('input[type="number"]').forEach(input => input.value = '');
+            document.getElementById('origin').value = 'all';
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('export-btn').style.display = 'none';
+        });
+
+        // Data loading and processing
+        let seeds = [];
+        let minMax = {}; // To store min/max for normalization
+
+        const originFiles = {
+            all: 'https://raw.githubusercontent.com/wlirareddit/bb_calculator/master/all_seeds.csv',
+            lw: 'https://raw.githubusercontent.com/wlirareddit/bb_calculator/master/lw_seeds.csv',
+            gladiators: 'https://raw.githubusercontent.com/wlirareddit/bb_calculator/master/gladiators_seeds.csv',
+            anatomists: 'https://raw.githubusercontent.com/wlirareddit/bb_calculator/master/anatomists_seeds.csv' // Assume file exists or add
+            // Add more for new origins
         };
 
-        const TERRAIN_ATTRIBUTES = ['plains', 'hills', 'forest', 'swamp', 'tundra', 'steppe', 'desert'];
-        const FACILITY_ATTRIBUTES = ['ports', 'arenas', 'weaponsmiths', 'armorsmiths', 'fletcher', 'temple', 'beasthunter_camp'];
-        const ECONOMY_ATTRIBUTES = ['trade_routes', 'trade_goods'];
-        const GEOMETRY_ATTRIBUTES = ['size', 'diameter'];
-
-        let currentSeeds = [];
-        let filteredSeeds = [];
-
-        function initSliders() {
-            const allAttributes = [...TERRAIN_ATTRIBUTES, ...FACILITY_ATTRIBUTES, ...ECONOMY_ATTRIBUTES, ...GEOMETRY_ATTRIBUTES];
-
-            allAttributes.forEach(attr => {
-                const slider = document.getElementById(attr);
-                const valueDisplay = document.getElementById(`${attr}-value`);
-
-                if (slider && valueDisplay) {
-                    slider.addEventListener('input', (e) => {
-                        valueDisplay.textContent = e.target.value;
-                    });
+        function loadSeeds(origin) {
+            const url = originFiles[origin] || originFiles.all;
+            document.getElementById('loading').style.display = 'block';
+            Papa.parse(url, {
+                download: true,
+                header: true,
+                complete: function(results) {
+                    seeds = results.data;
+                    calculateMinMax();
+                    document.getElementById('loading').style.display = 'none';
+                },
+                error: function(err) {
+                    console.error('Error loading CSV:', err);
+                    document.getElementById('loading').textContent = 'Error loading data.';
                 }
             });
         }
 
-        function initCollapsibleSections() {
-            document.querySelectorAll('.section-header').forEach(header => {
-                header.addEventListener('click', () => {
-                    const section = header.dataset.section;
-                    const content = document.getElementById(`${section}-content`);
-
-                    content.classList.toggle('hidden');
-                    header.classList.toggle('collapsed');
-                });
-            });
-        }
-
-        function resetCriteria() {
-            const allAttributes = [...TERRAIN_ATTRIBUTES, ...FACILITY_ATTRIBUTES, ...ECONOMY_ATTRIBUTES, ...GEOMETRY_ATTRIBUTES];
-
-            allAttributes.forEach(attr => {
-                const slider = document.getElementById(attr);
-                const valueDisplay = document.getElementById(`${attr}-value`);
-
-                if (slider && valueDisplay) {
-                    const defaultValue = TERRAIN_ATTRIBUTES.includes(attr) ? 0 : 0;
-                    slider.value = defaultValue;
-                    valueDisplay.textContent = defaultValue;
-                }
-            });
-
-            const minMaxAttributes = ['ports', 'arenas', 'weaponsmiths', 'armorsmiths'];
-            minMaxAttributes.forEach(attr => {
-                const minInput = document.getElementById(`${attr}-min`);
-                const maxInput = document.getElementById(`${attr}-max`);
-                if (minInput) minInput.value = '';
-                if (maxInput) maxInput.value = '';
-            });
-
-            document.getElementById('results').style.display = 'none';
-            document.getElementById('export-btn').disabled = true;
-        }
-
-        async function fetchSeeds(origin) {
-            const fileName = ORIGIN_FILES[origin];
-            const url = `${GITHUB_RAW_BASE}${fileName}`;
-
-            try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch seeds: ${response.statusText}`);
-                }
-                const data = await response.json();
-                return data;
-            } catch (error) {
-                throw new Error(`Error loading seed data: ${error.message}`);
-            }
-        }
-
-        function calculateMinMax(seeds) {
-            const minMax = {};
-            const attributes = [...TERRAIN_ATTRIBUTES, ...FACILITY_ATTRIBUTES, ...ECONOMY_ATTRIBUTES, ...GEOMETRY_ATTRIBUTES];
-
-            attributes.forEach(attr => {
-                const values = seeds.map(seed => seed[attr] || 0).filter(v => typeof v === 'number');
-                minMax[attr] = {
-                    min: Math.min(...values),
-                    max: Math.max(...values)
-                };
-            });
-
-            return minMax;
-        }
-
-        function normalize(value, min, max) {
-            if (max === min) return 0;
-            return (value - min) / (max - min);
-        }
-
-        function filterSeeds(seeds, criteria) {
-            return seeds.filter(seed => {
-                const minMaxAttributes = ['ports', 'arenas', 'weaponsmiths', 'armorsmiths'];
-
-                for (const attr of minMaxAttributes) {
-                    const minVal = criteria.minMax[attr]?.min;
-                    const maxVal = criteria.minMax[attr]?.max;
-                    const seedVal = seed[attr] || 0;
-
-                    if (minVal !== undefined && minVal !== null && minVal !== '' && seedVal < minVal) {
-                        return false;
-                    }
-                    if (maxVal !== undefined && maxVal !== null && maxVal !== '' && seedVal > maxVal) {
-                        return false;
-                    }
-                }
-
-                return true;
-            });
-        }
-
-        function scoreSeeds(seeds, criteria, minMaxData) {
-            const scoredSeeds = seeds.map(seed => {
-                let score = 0;
-
-                TERRAIN_ATTRIBUTES.forEach(attr => {
-                    const weight = criteria.terrain[attr] || 0;
-                    if (weight !== 0) {
-                        const value = seed[attr] || 0;
-                        let normalized = normalize(value, minMaxData[attr].min, minMaxData[attr].max);
-
-                        if (weight < 0) {
-                            normalized = 1 - normalized;
-                        }
-
-                        score += normalized * Math.abs(weight);
-                    }
-                });
-
-                FACILITY_ATTRIBUTES.forEach(attr => {
-                    const weight = criteria.facilities[attr] || 0;
-                    if (weight !== 0) {
-                        const value = seed[attr] || 0;
-                        const normalized = normalize(value, minMaxData[attr].min, minMaxData[attr].max);
-                        score += normalized * weight;
-                    }
-                });
-
-                ECONOMY_ATTRIBUTES.forEach(attr => {
-                    const weight = criteria.economy[attr] || 0;
-                    if (weight !== 0) {
-                        const value = seed[attr] || 0;
-                        const normalized = normalize(value, minMaxData[attr].min, minMaxData[attr].max);
-                        score += normalized * weight;
-                    }
-                });
-
-                GEOMETRY_ATTRIBUTES.forEach(attr => {
-                    const weight = criteria.geometry[attr] || 0;
-                    if (weight !== 0) {
-                        const value = seed[attr] || 0;
-                        const normalized = normalize(value, minMaxData[attr].min, minMaxData[attr].max);
-                        score += normalized * weight;
-                    }
-                });
-
-                return { ...seed, score };
-            });
-
-            return scoredSeeds.sort((a, b) => b.score - a.score);
-        }
-
-        function displayResults(seeds) {
-            const resultsDiv = document.getElementById('results');
-            const resultsBody = document.getElementById('results-body');
-            const resultsCount = document.getElementById('results-count');
-
-            resultsBody.innerHTML = '';
-
-            const topSeeds = seeds.slice(0, 50);
-
-            topSeeds.forEach((seed, index) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${seed.seed || 'N/A'}</td>
-                    <td class="score-cell">${seed.score.toFixed(2)}</td>
-                    <td>${seed.size || 0}</td>
-                    <td>${seed.diameter || 0}</td>
-                    <td>${seed.plains || 0}</td>
-                    <td>${seed.hills || 0}</td>
-                    <td>${seed.forest || 0}</td>
-                    <td>${seed.swamp || 0}</td>
-                    <td>${seed.tundra || 0}</td>
-                    <td>${seed.steppe || 0}</td>
-                    <td>${seed.desert || 0}</td>
-                    <td>${seed.ports || 0}</td>
-                    <td>${seed.arenas || 0}</td>
-                    <td>${seed.weaponsmiths || 0}</td>
-                    <td>${seed.armorsmiths || 0}</td>
-                    <td>${seed.trade_routes || 0}</td>
-                    <td>${seed.trade_goods || 0}</td>
-                    <td><a href="https://tumblrgallery.xyz/brother/map.html?seed=${seed.seed}" target="_blank" class="view-map-link">View Map</a></td>
-                `;
-                resultsBody.appendChild(row);
-            });
-
-            resultsCount.textContent = `Showing top ${topSeeds.length} of ${seeds.length} matching seeds`;
-            resultsDiv.style.display = 'block';
-            document.getElementById('export-btn').disabled = false;
-        }
-
-        function showError(message) {
-            const errorDiv = document.getElementById('error');
-            errorDiv.className = 'error-message';
-            errorDiv.textContent = message;
-            errorDiv.style.display = 'block';
-
-            setTimeout(() => {
-                errorDiv.style.display = 'none';
-            }, 5000);
-        }
-
-        async function searchSeeds() {
-            const origin = document.getElementById('origin').value;
-            const loadingDiv = document.getElementById('loading');
-            const searchBtn = document.getElementById('search-btn');
-
-            loadingDiv.style.display = 'block';
-            searchBtn.disabled = true;
-            document.getElementById('error').style.display = 'none';
-
-            try {
-                currentSeeds = await fetchSeeds(origin);
-
-                const criteria = {
-                    terrain: {},
-                    facilities: {},
-                    economy: {},
-                    geometry: {},
-                    minMax: {}
-                };
-
-                TERRAIN_ATTRIBUTES.forEach(attr => {
-                    criteria.terrain[attr] = parseInt(document.getElementById(attr).value) || 0;
-                });
-
-                FACILITY_ATTRIBUTES.forEach(attr => {
-                    criteria.facilities[attr] = parseInt(document.getElementById(attr).value) || 0;
-                });
-
-                ECONOMY_ATTRIBUTES.forEach(attr => {
-                    criteria.economy[attr] = parseInt(document.getElementById(attr).value) || 0;
-                });
-
-                GEOMETRY_ATTRIBUTES.forEach(attr => {
-                    criteria.geometry[attr] = parseInt(document.getElementById(attr).value) || 0;
-                });
-
-                ['ports', 'arenas', 'weaponsmiths', 'armorsmiths'].forEach(attr => {
-                    const min = document.getElementById(`${attr}-min`).value;
-                    const max = document.getElementById(`${attr}-max`).value;
-                    criteria.minMax[attr] = {
-                        min: min !== '' ? parseInt(min) : undefined,
-                        max: max !== '' ? parseInt(max) : undefined
+        function calculateMinMax() {
+            const keys = Object.keys(seeds[0] || {});
+            minMax = {};
+            keys.forEach(key => {
+                if (!isNaN(seeds[0][key])) {
+                    minMax[key] = {
+                        min: Math.min(...seeds.map(s => +s[key])),
+                        max: Math.max(...seeds.map(s => +s[key]))
                     };
-                });
-
-                const minMaxData = calculateMinMax(currentSeeds);
-
-                filteredSeeds = filterSeeds(currentSeeds, criteria);
-
-                const scoredSeeds = scoreSeeds(filteredSeeds, criteria, minMaxData);
-
-                displayResults(scoredSeeds);
-
-            } catch (error) {
-                showError(error.message);
-            } finally {
-                loadingDiv.style.display = 'none';
-                searchBtn.disabled = false;
-            }
+                }
+            });
         }
 
-        function exportToCSV() {
-            if (filteredSeeds.length === 0) return;
+        // Initial load
+        loadSeeds('all');
 
-            const headers = ['Rank', 'Seed', 'Score', 'Size', 'Diameter', 'Plains', 'Hills', 'Forest', 'Swamp', 'Tundra', 'Steppe', 'Desert', 'Ports', 'Arenas', 'Weaponsmiths', 'Armorsmiths', 'Fletcher', 'Temple', 'Beast Hunter Camp', 'Trade Routes', 'Trade Goods'];
+        // Origin change
+        document.getElementById('origin').addEventListener('change', (e) => loadSeeds(e.target.value));
 
-            const rows = filteredSeeds.slice(0, 50).map((seed, index) => [
-                index + 1,
-                seed.seed || 'N/A',
-                seed.score.toFixed(2),
-                seed.size || 0,
-                seed.diameter || 0,
-                seed.plains || 0,
-                seed.hills || 0,
-                seed.forest || 0,
-                seed.swamp || 0,
-                seed.tundra || 0,
-                seed.steppe || 0,
-                seed.desert || 0,
-                seed.ports || 0,
-                seed.arenas || 0,
-                seed.weaponsmiths || 0,
-                seed.armorsmiths || 0,
-                seed.fletcher || 0,
-                seed.temple || 0,
-                seed.beasthunter_camp || 0,
-                seed.trade_routes || 0,
-                seed.trade_goods || 0
-            ]);
+        // Search button
+        document.getElementById('search-btn').addEventListener('click', () => {
+            if (!seeds.length) return alert('Data not loaded.');
+            
+            const criteria = {
+                // Terrain (negative values reverse preference)
+                plains: +document.getElementById('plains').value,
+                hills: +document.getElementById('hills').value,
+                forest: +document.getElementById('forest').value,
+                swamp: +document.getElementById('swamp').value,
+                tundra: +document.getElementById('tundra').value,
+                steppe: +document.getElementById('steppe').value,
+                desert: +document.getElementById('desert').value,
+                
+                // Facilities
+                ports: +document.getElementById('ports').value,
+                arenas: +document.getElementById('arenas').value,
+                weaponsmiths: +document.getElementById('weaponsmiths').value,
+                armorsmiths: +document.getElementById('armorsmiths').value,
+                fletcher: +document.getElementById('fletcher').value,
+                temple: +document.getElementById('temple').value,
+                beasthunter_camp: +document.getElementById('beasthunter_camp').value,
+                
+                // Economy
+                trade_routes: +document.getElementById('trade_routes').value,
+                trade_goods: +document.getElementById('trade_goods').value,
+                
+                // Geometry
+                size: +document.getElementById('size').value,
+                diameter: +document.getElementById('diameter').value
+            };
+            
+            const minFilters = {
+                ports: +document.getElementById('min_ports').value || 0,
+                // Add more
+            };
+            const maxFilters = {
+                ports: +document.getElementById('max_ports').value || Infinity,
+                // Add more
+            };
+            
+            const matchedSeeds = seeds
+                .filter(seed => {
+                    // Apply min/max filters
+                    if (seed.Ports < minFilters.ports || seed.Ports > maxFilters.ports) return false;
+                    // Add more filters
+                    return true;
+                })
+                .map(seed => {
+                    let score = 0;
+                    Object.keys(criteria).forEach(key => {
+                        if (minMax[key]) {
+                            let normalized = (seed[key] - minMax[key].min) / (minMax[key].max - minMax[key].min);
+                            if (criteria[key] < 0) normalized = 1 - normalized; // Reverse for negative prefs
+                            score += Math.abs(criteria[key]) * normalized;
+                        }
+                    });
+                    return { ...seed, score };
+                })
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 50); // Top 50 for performance
+            
+            const tbody = document.querySelector('#results tbody');
+            tbody.innerHTML = '';
+            matchedSeeds.forEach(seed => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${seed.Seed}</td>
+                    <td>${seed.score.toFixed(2)}</td>
+                    <td>${seed.Size}</td>
+                    <td>${seed.Diameter}</td>
+                    <td>${seed.Ports}</td>
+                    <td>${seed.Arenas}</td>
+                    <!-- Add more -->
+                    <td><a href="https://tumblrgallery.xyz/brother/map.html?seed=${seed.Seed}" target="_blank">View</a></td>
+                `;
+                tbody.appendChild(tr);
+            });
+            
+            document.getElementById('results').style.display = 'table';
+            document.getElementById('export-btn').style.display = 'inline-block';
+            exportResults = () => exportCSV(matchedSeeds);
+        });
 
-            const csvContent = [
-                headers.join(','),
-                ...rows.map(row => row.join(','))
-            ].join('\n');
-
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        // Export function
+        let exportResults;
+        function exportCSV(data) {
+            const csv = Papa.unparse(data);
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
-            const url = URL.createObjectURL(blob);
-
-            link.setAttribute('href', url);
-            link.setAttribute('download', `bb_seeds_${Date.now()}.csv`);
-            link.style.visibility = 'hidden';
-
-            document.body.appendChild(link);
+            link.href = URL.createObjectURL(blob);
+            link.download = 'perfect_seeds_v2.csv';
             link.click();
-            document.body.removeChild(link);
         }
 
-        document.getElementById('search-btn').addEventListener('click', searchSeeds);
-        document.getElementById('reset-btn').addEventListener('click', resetCriteria);
-        document.getElementById('export-btn').addEventListener('click', exportToCSV);
-
-        initSliders();
-        initCollapsibleSections();
+        document.getElementById('export-btn').addEventListener('click', () => exportResults());
     </script>
 </body>
 </html>
