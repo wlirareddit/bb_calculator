@@ -254,128 +254,125 @@
         			 
         		 
         		 $(function(){
-        					var lb = new $.LoadingBox({loadingImageSrc: "https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif",});
-        
-        					//$.getJSON('https://www.sfu.ca/~wpintoli/LW_Seed_Farm.json', function(data) {
-        		 //$.getJSON('https://drive.google.com/uc?export=view&id=1rAHkB2KIe64ld5s0NZvpofkhpPHTzD9E', function(data) {
-        		 $.getJSON('seeds_Gladiator.json', function(data) {
-        			//console.log(data)
-        			//call relevant functions after loading data
-        			 lb.close();
-        			 //set default stars
-        			selectDefaultRadioVal(document.getElementById('GeographyImportanceForm'), 'ratingGeographyImportance');
-        			selectDefaultRadioVal(document.getElementById('SettlementCompactnessForm'), 'ratingSettlementCompactness');
-        			selectDefaultRadioVal(document.getElementById('SeaCompactnessForm'), 'ratingSeaCompactness');
-					selectDefaultRadioVal(document.getElementById('SouthernCompactnessForm'), 'ratingSouthernCompactness');
-					selectDefaultRadioVal(document.getElementById('SouthernArenaPortForm'), 'ratingSouthernArenaPort');
-        			/**selectDefaultRadioVal(document.getElementById('FamedItemsForm'), 'ratingFamedItems');
-        			selectDefaultRadioVal(document.getElementById('PlainsForm'), 'ratingPlains');
-        			selectDefaultRadioVal(document.getElementById('SwampForm'), 'ratingSwamp');
-        			selectDefaultRadioVal(document.getElementById('HillsForm'), 'ratingHills');
-        			selectDefaultRadioVal(document.getElementById('SnowyForestForm'), 'ratingSnowyForest');
-        			selectDefaultRadioVal(document.getElementById('NormalForestForm'), 'ratingNormalForest');
-        			selectDefaultRadioVal(document.getElementById('LeaveForestForm'), 'ratingLeaveForest');
-        			selectDefaultRadioVal(document.getElementById('OceanForm'), 'ratingOcean');
-        			selectDefaultRadioVal(document.getElementById('AutumnForestForm'), 'ratingAutumnForest');
-        			selectDefaultRadioVal(document.getElementById('TundraForm'), 'ratingTundra');
-        			selectDefaultRadioVal(document.getElementById('SnowForm'), 'ratingSnow');
-        			selectDefaultRadioVal(document.getElementById('MountainsForm'), 'ratingMountains');
-        			selectDefaultRadioVal(document.getElementById('SteppeForm'), 'ratingSteppe');
-        			selectDefaultRadioVal(document.getElementById('ShoreForm'), 'ratingShore');
-        			**/
-        			selectDefaultRadioVal(document.getElementById('EconomyImportanceForm'), 'ratingEconomyImportance');
-        			selectDefaultRadioVal(document.getElementById('AmberCollectorImportanceForm'), 'ratingAmberCollectorImportance');
-        			selectDefaultRadioVal(document.getElementById('ArrowMakerShedImportanceForm'), 'ratingArrowMakerShedImportance');
-        			selectDefaultRadioVal(document.getElementById('BeekeeperImportanceForm'), 'ratingBeekeeperImportance');
-        			selectDefaultRadioVal(document.getElementById('BlastFurnaceImportanceForm'), 'ratingBlastFurnaceImportance');
-        			selectDefaultRadioVal(document.getElementById('BreweryImportanceForm'), 'ratingBreweryImportance');
-        			selectDefaultRadioVal(document.getElementById('DyeMakerImportanceForm'), 'ratingDyeMakerImportance');
-        			selectDefaultRadioVal(document.getElementById('FishingHutImportanceForm'), 'ratingFishingHutImportance');
-        			selectDefaultRadioVal(document.getElementById('GathererHutImportanceForm'), 'ratingGathererHutImportance');
-        			selectDefaultRadioVal(document.getElementById('GemMineImportanceForm'), 'ratingGemMineImportance');
-        			selectDefaultRadioVal(document.getElementById('GoatPenImportanceForm'), 'ratingGoatPenImportance');
-        			selectDefaultRadioVal(document.getElementById('HarborImportanceForm'), 'ratingHarborImportance');
-        			selectDefaultRadioVal(document.getElementById('HerbalistGroveImportanceForm'), 'ratingHerbalistGroveImportance');
-        			selectDefaultRadioVal(document.getElementById('HunterCabinImportanceForm'), 'ratingHunterCabinImportance');
-        			selectDefaultRadioVal(document.getElementById('LeatherTannerImportanceForm'), 'ratingLeatherTannerImportance');
-        			selectDefaultRadioVal(document.getElementById('LumberCampImportanceForm'), 'ratingLumberCampImportance');
-        			selectDefaultRadioVal(document.getElementById('MilitiaBarrackImportanceForm'), 'ratingMilitiaBarrackImportance');
-        			selectDefaultRadioVal(document.getElementById('MilitaryBarrackImportanceForm'), 'ratingMilitaryBarrackImportance');
-        			selectDefaultRadioVal(document.getElementById('MushroomGroveImportanceForm'), 'ratingMushroomGroveImportance');
-        			selectDefaultRadioVal(document.getElementById('OrchardImportanceForm'), 'ratingOrchardImportance');
-        			selectDefaultRadioVal(document.getElementById('OreSmelterImportanceForm'), 'ratingOreSmelterImportance');
-        			selectDefaultRadioVal(document.getElementById('PeatPitImportanceForm'), 'ratingPeatPitImportance');
-        			selectDefaultRadioVal(document.getElementById('PigFarmImportanceForm'), 'ratingPigFarmImportance');
-        			selectDefaultRadioVal(document.getElementById('SaltMineImportanceForm'), 'ratingSaltMineImportance');
-        			selectDefaultRadioVal(document.getElementById('SurfaceCopperVeinImportanceForm'), 'ratingSurfaceCopperVeinImportance');
-        			selectDefaultRadioVal(document.getElementById('StoneWatchTowerImportanceForm'), 'ratingStoneWatchTowerImportance');
-        			selectDefaultRadioVal(document.getElementById('SurfaceIronVeinImportanceForm'), 'ratingSurfaceIronVeinImportance');
-        			selectDefaultRadioVal(document.getElementById('TrapperImportanceForm'), 'ratingTrapperImportance');
-        			selectDefaultRadioVal(document.getElementById('WheatFieldImportanceForm'), 'ratingWheatFieldImportance');
-        			selectDefaultRadioVal(document.getElementById('WineryImportanceForm'), 'ratingWineryImportance');
-        			selectDefaultRadioVal(document.getElementById('WoodenWatchTowerImportanceForm'), 'ratingWoodenWatchTowerImportance');
-        			selectDefaultRadioVal(document.getElementById('WoolSpinnerImportanceForm'), 'ratingWoolSpinnerImportance');
-        			selectDefaultRadioVal(document.getElementById('WorkshopForm'), 'ratingWorkshop');
-					selectDefaultRadioVal(document.getElementById('IncenseForm'), 'ratingIncense');
-					selectDefaultRadioVal(document.getElementById('SilkForm'), 'ratingSilk');
-					selectDefaultRadioVal(document.getElementById('SpiceForm'), 'ratingSpice');
-        			
-        			selectDefaultRadioVal(document.getElementById('FacilitiesImportanceForm'), 'ratingFacilitiesImportance');
-        			selectDefaultRadioVal(document.getElementById('ArmorerForm'), 'ratingArmorer');
-        			selectDefaultRadioVal(document.getElementById('BarberForm'), 'ratingBarber');
-        			selectDefaultRadioVal(document.getElementById('FletcherForm'), 'ratingFletcher');
-        			selectDefaultRadioVal(document.getElementById('KennelForm'), 'ratingKennel');
-        			selectDefaultRadioVal(document.getElementById('PortForm'), 'ratingPort');
-        			selectDefaultRadioVal(document.getElementById('TavernForm'), 'ratingTavern');
-        			selectDefaultRadioVal(document.getElementById('TaxidermistForm'), 'ratingTaxidermist');
-        			selectDefaultRadioVal(document.getElementById('TempleForm'), 'ratingTemple');
-        			selectDefaultRadioVal(document.getElementById('TrainingHallForm'), 'ratingTrainingHall');
-        			selectDefaultRadioVal(document.getElementById('WeaponsmithForm'), 'ratingWeaponsmith');
-        			
-        			selectDefaultRadioVal(document.getElementById('TheLionImportanceForm'), 'ratingTheLionImportance');
-        			selectDefaultRadioVal(document.getElementById('HealthLionImportanceForm'), 'ratingHealthLionImportance');
-        			selectDefaultRadioVal(document.getElementById('FatigueLionImportanceForm'), 'ratingFatigueLionImportance');
-        			selectDefaultRadioVal(document.getElementById('ResolveLionImportanceForm'), 'ratingResolveLionImportance');
-        			selectDefaultRadioVal(document.getElementById('InitiativeLionImportanceForm'), 'ratingInitiativeLionImportance');
-        			selectDefaultRadioVal(document.getElementById('MeleeAttackLionImportanceForm'), 'ratingMeleeAttackLionImportance');
-        			selectDefaultRadioVal(document.getElementById('RangedAttackLionImportanceForm'), 'ratingRangedAttackLionImportance');
-        			selectDefaultRadioVal(document.getElementById('RangedDefenseLionImportanceForm'), 'ratingRangedDefenseLionImportance');
-        			selectDefaultRadioVal(document.getElementById('MeleeDefenseLionImportanceForm'), 'ratingMeleeDefenseLionImportance');
-        			selectDefaultRadioVal(document.getElementById('Trait1LionImportanceForm'), 'ratingTrait1LionImportance');
-        			selectDefaultRadioVal(document.getElementById('Trait2LionImportanceForm'), 'ratingTrait2LionImportance');
-					
-					selectDefaultRadioVal(document.getElementById('TheBearImportanceForm'), 'ratingTheBearImportance');
-        			selectDefaultRadioVal(document.getElementById('HealthBearImportanceForm'), 'ratingHealthBearImportance');
-        			selectDefaultRadioVal(document.getElementById('FatigueBearImportanceForm'), 'ratingFatigueBearImportance');
-        			selectDefaultRadioVal(document.getElementById('ResolveBearImportanceForm'), 'ratingResolveBearImportance');
-        			selectDefaultRadioVal(document.getElementById('InitiativeBearImportanceForm'), 'ratingInitiativeBearImportance');
-        			selectDefaultRadioVal(document.getElementById('MeleeAttackBearImportanceForm'), 'ratingMeleeAttackBearImportance');
-        			selectDefaultRadioVal(document.getElementById('RangedAttackBearImportanceForm'), 'ratingRangedAttackBearImportance');
-        			selectDefaultRadioVal(document.getElementById('RangedDefenseBearImportanceForm'), 'ratingRangedDefenseBearImportance');
-        			selectDefaultRadioVal(document.getElementById('MeleeDefenseBearImportanceForm'), 'ratingMeleeDefenseBearImportance');
-        			selectDefaultRadioVal(document.getElementById('Trait1BearImportanceForm'), 'ratingTrait1BearImportance');
-        			selectDefaultRadioVal(document.getElementById('Trait2BearImportanceForm'), 'ratingTrait2BearImportance');
-					
-					selectDefaultRadioVal(document.getElementById('TheViperImportanceForm'), 'ratingTheViperImportance');
-        			selectDefaultRadioVal(document.getElementById('HealthViperImportanceForm'), 'ratingHealthViperImportance');
-        			selectDefaultRadioVal(document.getElementById('FatigueViperImportanceForm'), 'ratingFatigueViperImportance');
-        			selectDefaultRadioVal(document.getElementById('ResolveViperImportanceForm'), 'ratingResolveViperImportance');
-        			selectDefaultRadioVal(document.getElementById('InitiativeViperImportanceForm'), 'ratingInitiativeViperImportance');
-        			selectDefaultRadioVal(document.getElementById('MeleeAttackViperImportanceForm'), 'ratingMeleeAttackViperImportance');
-        			selectDefaultRadioVal(document.getElementById('RangedAttackViperImportanceForm'), 'ratingRangedAttackViperImportance');
-        			selectDefaultRadioVal(document.getElementById('RangedDefenseViperImportanceForm'), 'ratingRangedDefenseViperImportance');
-        			selectDefaultRadioVal(document.getElementById('MeleeDefenseViperImportanceForm'), 'ratingMeleeDefenseViperImportance');
-        			selectDefaultRadioVal(document.getElementById('Trait1ViperImportanceForm'), 'ratingTrait1ViperImportance');
-        			selectDefaultRadioVal(document.getElementById('Trait2ViperImportanceForm'), 'ratingTrait2ViperImportance');
-        			
-        			jsonfile = data;
-        			minmax = getMaxMinValues(jsonfile);
-					
-					document.getElementById("number_of_seeds").innerText = numberWithCommas(jsonfile.length)+" Seeds";
-        			
-        		
-        				});
-        		 });
+					var lb = new $.LoadingBox({loadingImageSrc: "https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif"});
+
+					fetch('seeds_Gladiator_consolidated_2025.json.gz')
+						.then(response => {
+							if (!response.ok) {
+								throw new Error('Failed to load data');
+							}
+							return response.body.pipeThrough(new DecompressionStream('gzip'));
+						})
+						.then(stream => new Response(stream).text())
+						.then(text => {
+							jsonfile = JSON.parse(text);
+
+							console.log('Consolidated JSON loaded – seeds count:', jsonfile.length);
+
+							// === Set all default radio values (exactly your original list) ===
+							selectDefaultRadioVal(document.getElementById('GeographyImportanceForm'), 'ratingGeographyImportance');
+							selectDefaultRadioVal(document.getElementById('SettlementCompactnessForm'), 'ratingSettlementCompactness');
+							selectDefaultRadioVal(document.getElementById('SeaCompactnessForm'), 'ratingSeaCompactness');
+							selectDefaultRadioVal(document.getElementById('SouthernCompactnessForm'), 'ratingSouthernCompactness');
+							selectDefaultRadioVal(document.getElementById('SouthernArenaPortForm'), 'ratingSouthernArenaPort');
+							
+							selectDefaultRadioVal(document.getElementById('EconomyImportanceForm'), 'ratingEconomyImportance');
+							selectDefaultRadioVal(document.getElementById('AmberCollectorImportanceForm'), 'ratingAmberCollectorImportance');
+							selectDefaultRadioVal(document.getElementById('ArrowMakerShedImportanceForm'), 'ratingArrowMakerShedImportance');
+							selectDefaultRadioVal(document.getElementById('BeekeeperImportanceForm'), 'ratingBeekeeperImportance');
+							selectDefaultRadioVal(document.getElementById('BlastFurnaceImportanceForm'), 'ratingBlastFurnaceImportance');
+							selectDefaultRadioVal(document.getElementById('BreweryImportanceForm'), 'ratingBreweryImportance');
+							selectDefaultRadioVal(document.getElementById('DyeMakerImportanceForm'), 'ratingDyeMakerImportance');
+							selectDefaultRadioVal(document.getElementById('FishingHutImportanceForm'), 'ratingFishingHutImportance');
+							selectDefaultRadioVal(document.getElementById('GathererHutImportanceForm'), 'ratingGathererHutImportance');
+							selectDefaultRadioVal(document.getElementById('GemMineImportanceForm'), 'ratingGemMineImportance');
+							selectDefaultRadioVal(document.getElementById('GoatPenImportanceForm'), 'ratingGoatPenImportance');
+							selectDefaultRadioVal(document.getElementById('HarborImportanceForm'), 'ratingHarborImportance');
+							selectDefaultRadioVal(document.getElementById('HerbalistGroveImportanceForm'), 'ratingHerbalistGroveImportance');
+							selectDefaultRadioVal(document.getElementById('HunterCabinImportanceForm'), 'ratingHunterCabinImportance');
+							selectDefaultRadioVal(document.getElementById('LeatherTannerImportanceForm'), 'ratingLeatherTannerImportance');
+							selectDefaultRadioVal(document.getElementById('LumberCampImportanceForm'), 'ratingLumberCampImportance');
+							selectDefaultRadioVal(document.getElementById('MilitiaBarrackImportanceForm'), 'ratingMilitiaBarrackImportance');
+							selectDefaultRadioVal(document.getElementById('MilitaryBarrackImportanceForm'), 'ratingMilitaryBarrackImportance');
+							selectDefaultRadioVal(document.getElementById('MushroomGroveImportanceForm'), 'ratingMushroomGroveImportance');
+							selectDefaultRadioVal(document.getElementById('OrchardImportanceForm'), 'ratingOrchardImportance');
+							selectDefaultRadioVal(document.getElementById('OreSmelterImportanceForm'), 'ratingOreSmelterImportance');
+							selectDefaultRadioVal(document.getElementById('PeatPitImportanceForm'), 'ratingPeatPitImportance');
+							selectDefaultRadioVal(document.getElementById('PigFarmImportanceForm'), 'ratingPigFarmImportance');
+							selectDefaultRadioVal(document.getElementById('SaltMineImportanceForm'), 'ratingSaltMineImportance');
+							selectDefaultRadioVal(document.getElementById('SurfaceCopperVeinImportanceForm'), 'ratingSurfaceCopperVeinImportance');
+							selectDefaultRadioVal(document.getElementById('StoneWatchTowerImportanceForm'), 'ratingStoneWatchTowerImportance');
+							selectDefaultRadioVal(document.getElementById('SurfaceIronVeinImportanceForm'), 'ratingSurfaceIronVeinImportance');
+							selectDefaultRadioVal(document.getElementById('TrapperImportanceForm'), 'ratingTrapperImportance');
+							selectDefaultRadioVal(document.getElementById('WheatFieldImportanceForm'), 'ratingWheatFieldImportance');
+							selectDefaultRadioVal(document.getElementById('WineryImportanceForm'), 'ratingWineryImportance');
+							selectDefaultRadioVal(document.getElementById('WoodenWatchTowerImportanceForm'), 'ratingWoodenWatchTowerImportance');
+							selectDefaultRadioVal(document.getElementById('WoolSpinnerImportanceForm'), 'ratingWoolSpinnerImportance');
+							selectDefaultRadioVal(document.getElementById('WorkshopForm'), 'ratingWorkshop');
+							selectDefaultRadioVal(document.getElementById('IncenseForm'), 'ratingIncense');
+							selectDefaultRadioVal(document.getElementById('SilkForm'), 'ratingSilk');
+							selectDefaultRadioVal(document.getElementById('SpiceForm'), 'ratingSpice');
+							
+							selectDefaultRadioVal(document.getElementById('FacilitiesImportanceForm'), 'ratingFacilitiesImportance');
+							selectDefaultRadioVal(document.getElementById('ArmorerForm'), 'ratingArmorer');
+							selectDefaultRadioVal(document.getElementById('BarberForm'), 'ratingBarber');
+							selectDefaultRadioVal(document.getElementById('FletcherForm'), 'ratingFletcher');
+							selectDefaultRadioVal(document.getElementById('KennelForm'), 'ratingKennel');
+							selectDefaultRadioVal(document.getElementById('PortForm'), 'ratingPort');
+							selectDefaultRadioVal(document.getElementById('TavernForm'), 'ratingTavern');
+							selectDefaultRadioVal(document.getElementById('TaxidermistForm'), 'ratingTaxidermist');
+							selectDefaultRadioVal(document.getElementById('TempleForm'), 'ratingTemple');
+							selectDefaultRadioVal(document.getElementById('TrainingHallForm'), 'ratingTrainingHall');
+							selectDefaultRadioVal(document.getElementById('WeaponsmithForm'), 'ratingWeaponsmith');
+							
+							selectDefaultRadioVal(document.getElementById('TheLionImportanceForm'), 'ratingTheLionImportance');
+							selectDefaultRadioVal(document.getElementById('HealthLionImportanceForm'), 'ratingHealthLionImportance');
+							selectDefaultRadioVal(document.getElementById('FatigueLionImportanceForm'), 'ratingFatigueLionImportance');
+							selectDefaultRadioVal(document.getElementById('ResolveLionImportanceForm'), 'ratingResolveLionImportance');
+							selectDefaultRadioVal(document.getElementById('InitiativeLionImportanceForm'), 'ratingInitiativeLionImportance');
+							selectDefaultRadioVal(document.getElementById('MeleeAttackLionImportanceForm'), 'ratingMeleeAttackLionImportance');
+							selectDefaultRadioVal(document.getElementById('RangedAttackLionImportanceForm'), 'ratingRangedAttackLionImportance');
+							selectDefaultRadioVal(document.getElementById('RangedDefenseLionImportanceForm'), 'ratingRangedDefenseLionImportance');
+							selectDefaultRadioVal(document.getElementById('MeleeDefenseLionImportanceForm'), 'ratingMeleeDefenseLionImportance');
+							selectDefaultRadioVal(document.getElementById('Trait1LionImportanceForm'), 'ratingTrait1LionImportance');
+							selectDefaultRadioVal(document.getElementById('Trait2LionImportanceForm'), 'ratingTrait2LionImportance');
+							
+							selectDefaultRadioVal(document.getElementById('TheBearImportanceForm'), 'ratingTheBearImportance');
+							selectDefaultRadioVal(document.getElementById('HealthBearImportanceForm'), 'ratingHealthBearImportance');
+							selectDefaultRadioVal(document.getElementById('FatigueBearImportanceForm'), 'ratingFatigueBearImportance');
+							selectDefaultRadioVal(document.getElementById('ResolveBearImportanceForm'), 'ratingResolveBearImportance');
+							selectDefaultRadioVal(document.getElementById('InitiativeBearImportanceForm'), 'ratingInitiativeBearImportance');
+							selectDefaultRadioVal(document.getElementById('MeleeAttackBearImportanceForm'), 'ratingMeleeAttackBearImportance');
+							selectDefaultRadioVal(document.getElementById('RangedAttackBearImportanceForm'), 'ratingRangedAttackBearImportance');
+							selectDefaultRadioVal(document.getElementById('RangedDefenseBearImportanceForm'), 'ratingRangedDefenseBearImportance');
+							selectDefaultRadioVal(document.getElementById('MeleeDefenseBearImportanceForm'), 'ratingMeleeDefenseBearImportance');
+							selectDefaultRadioVal(document.getElementById('Trait1BearImportanceForm'), 'ratingTrait1BearImportance');
+							selectDefaultRadioVal(document.getElementById('Trait2BearImportanceForm'), 'ratingTrait2BearImportance');
+							
+							selectDefaultRadioVal(document.getElementById('TheViperImportanceForm'), 'ratingTheViperImportance');
+							selectDefaultRadioVal(document.getElementById('HealthViperImportanceForm'), 'ratingHealthViperImportance');
+							selectDefaultRadioVal(document.getElementById('FatigueViperImportanceForm'), 'ratingFatigueViperImportance');
+							selectDefaultRadioVal(document.getElementById('ResolveViperImportanceForm'), 'ratingResolveViperImportance');
+							selectDefaultRadioVal(document.getElementById('InitiativeViperImportanceForm'), 'ratingInitiativeViperImportance');
+							selectDefaultRadioVal(document.getElementById('MeleeAttackViperImportanceForm'), 'ratingMeleeAttackViperImportance');
+							selectDefaultRadioVal(document.getElementById('RangedAttackViperImportanceForm'), 'ratingRangedAttackViperImportance');
+							selectDefaultRadioVal(document.getElementById('RangedDefenseViperImportanceForm'), 'ratingRangedDefenseViperImportance');
+							selectDefaultRadioVal(document.getElementById('MeleeDefenseViperImportanceForm'), 'ratingMeleeDefenseViperImportance');
+							selectDefaultRadioVal(document.getElementById('Trait1ViperImportanceForm'), 'ratingTrait1ViperImportance');
+							selectDefaultRadioVal(document.getElementById('Trait2ViperImportanceForm'), 'ratingTrait2ViperImportance');
+
+							// === Final setup ===
+							minmax = getMaxMinValues(jsonfile);
+							document.getElementById("number_of_seeds").innerText = numberWithCommas(jsonfile.length) + " Seeds";
+
+							lb.close();
+						})
+						.catch(err => {
+							console.error('Failed to load or decompress seeds_Gladiator_consolidated_2025.json.gz:', err);
+							alert('Could not load seed data. Must use modern Chrome/Edge/Firefox).');
+							lb.close();
+						});
+				});
         
         		
         		
