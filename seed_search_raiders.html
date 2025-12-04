@@ -266,13 +266,23 @@
         			 
         		 
         		 $(function(){
-        					var lb = new $.LoadingBox({loadingImageSrc: "https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif",});
-        		 $.getJSON('seeds_Raiders_0.json', function(data) {
-        			//console.log(data)
-        			//call relevant functions after loading data
-        			 lb.close();
-        			 //set default stars
-        			selectDefaultRadioVal(document.getElementById('GeographyImportanceForm'), 'ratingGeographyImportance');
+					var lb = new $.LoadingBox({loadingImageSrc: "https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif"});
+
+					fetch('seeds_Raiders_consolidated_2025.json.gz')
+						.then(response => {
+							if (!response.ok) {
+								throw new Error('Failed to load data');
+							}
+							return response.body.pipeThrough(new DecompressionStream('gzip'));
+						})
+						.then(stream => new Response(stream).text())
+						.then(text => {
+							jsonfile = JSON.parse(text);
+
+							console.log('Consolidated JSON loaded – seeds count:', jsonfile.length);
+
+							// === Set all default radio values (exactly your original list) ===
+							selectDefaultRadioVal(document.getElementById('GeographyImportanceForm'), 'ratingGeographyImportance');
         			selectDefaultRadioVal(document.getElementById('SettlementCompactnessForm'), 'ratingSettlementCompactness');
         			selectDefaultRadioVal(document.getElementById('SeaCompactnessForm'), 'ratingSeaCompactness');
 					selectDefaultRadioVal(document.getElementById('SouthernCompactnessForm'), 'ratingSouthernCompactness');
@@ -391,15 +401,19 @@
         			selectDefaultRadioVal(document.getElementById('MeleeDefenseMonkImportanceForm'), 'ratingMeleeDefenseMonkImportance');
         			selectDefaultRadioVal(document.getElementById('Trait1MonkImportanceForm'), 'ratingTrait1MonkImportance');
         			selectDefaultRadioVal(document.getElementById('Trait2MonkImportanceForm'), 'ratingTrait2MonkImportance');
-					
-        			
-        			jsonfile = data;
-        			minmax = getMaxMinValues(jsonfile);
-        			
-					document.getElementById("number_of_seeds").innerText = numberWithCommas(jsonfile.length)+" Seeds";
-        		
-        				});
-        		 });
+
+							// === Final setup ===
+							minmax = getMaxMinValues(jsonfile);
+							document.getElementById("number_of_seeds").innerText = numberWithCommas(jsonfile.length) + " Seeds";
+
+							lb.close();
+						})
+						.catch(err => {
+							console.error('Failed to load or decompress seeds_Gladiator_consolidated_2025.json.gz:', err);
+							alert('Could not load seed data. Must use modern Chrome/Edge/Firefox).');
+							lb.close();
+						});
+				});
         
         		
         		
