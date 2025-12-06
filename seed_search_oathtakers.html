@@ -242,16 +242,23 @@
         			 
         		 
         		 $(function(){
-        					var lb = new $.LoadingBox({loadingImageSrc: "https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif",});
-        
-        					//$.getJSON('https://www.sfu.ca/~wpintoli/LW_Seed_Farm.json', function(data) {
-        		 //$.getJSON('https://drive.google.com/uc?export=view&id=1rAHkB2KIe64ld5s0NZvpofkhpPHTzD9E', function(data) {
-        		 $.getJSON('seeds_Oathtakers_0.json', function(data) {
-        			//console.log(data)
-        			//call relevant functions after loading data
-        			 lb.close();
-        			 //set default stars
-        			selectDefaultRadioVal(document.getElementById('GeographyImportanceForm'), 'ratingGeographyImportance');
+					var lb = new $.LoadingBox({loadingImageSrc: "https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif"});
+
+					fetch('seeds_Slayers_consolidated_2025.json.gz')
+						.then(response => {
+							if (!response.ok) {
+								throw new Error('Failed to load data');
+							}
+							return response.body.pipeThrough(new DecompressionStream('gzip'));
+						})
+						.then(stream => new Response(stream).text())
+						.then(text => {
+							jsonfile = JSON.parse(text);
+
+							console.log('Consolidated JSON loaded – seeds count:', jsonfile.length);
+
+							// === Set all default radio values (exactly your original list) ===
+							selectDefaultRadioVal(document.getElementById('GeographyImportanceForm'), 'ratingGeographyImportance');
         			selectDefaultRadioVal(document.getElementById('SettlementCompactnessForm'), 'ratingSettlementCompactness');
         			selectDefaultRadioVal(document.getElementById('SeaCompactnessForm'), 'ratingSeaCompactness');
 					selectDefaultRadioVal(document.getElementById('SouthernCompactnessForm'), 'ratingSouthernCompactness');
@@ -343,25 +350,19 @@
         			selectDefaultRadioVal(document.getElementById('MeleeDefenseBearImportanceForm'), 'ratingMeleeDefenseBearImportance');
         			selectDefaultRadioVal(document.getElementById('Trait1BearImportanceForm'), 'ratingTrait1BearImportance');
         			selectDefaultRadioVal(document.getElementById('Trait2BearImportanceForm'), 'ratingTrait2BearImportance');
-        			
-        			jsonfile = data;
-        			$(function(){
-							 $.getJSON('seeds_Oathtakers_1.json', function(data) {
-							 console.log(data);
-								 lb.close();
-								 //set default stars
-								
-								jsonfile = jsonfile.concat(data);
-								minmax = getMaxMinValues(jsonfile);
-								document.getElementById("number_of_seeds").innerText = numberWithCommas(jsonfile.length)+" Seeds";
-								
-								
-        				});
-        		 });
-        			
-        		
-        				});
-        		 });
+
+							// === Final setup ===
+							minmax = getMaxMinValues(jsonfile);
+							document.getElementById("number_of_seeds").innerText = numberWithCommas(jsonfile.length) + " Seeds";
+
+							lb.close();
+						})
+						.catch(err => {
+							console.error('Failed to load or decompress: ', err);
+							alert('Could not load seed data. Must use modern Chrome/Edge/Firefox).');
+							lb.close();
+						});
+				});
         
         		
         		
